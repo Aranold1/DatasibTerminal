@@ -1,8 +1,6 @@
 ﻿using DataSibTerminal.Models;
 using Microsoft.AspNetCore.Mvc;
-using System.Diagnostics;
-using System.Runtime.Intrinsics.Arm;
-using System.Security.Cryptography;
+using System.Runtime.CompilerServices;
 
 namespace DataSibTerminal.Controllers
 {
@@ -18,7 +16,7 @@ namespace DataSibTerminal.Controllers
             _logger = logger;
             _postgresContext = postgresContext;
         }
-        public IActionResult LogIn(User user)
+        public IActionResult LogIn(Users user)
         {
 
             if (ModelState.IsValid)

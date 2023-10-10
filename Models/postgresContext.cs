@@ -13,36 +13,17 @@ public partial class postgresContext : DbContext
     {
     }
 
-    public virtual DbSet<Ticket> Ticket { get; set; }
-
-    public virtual DbSet<User> User { get; set; }
+    public virtual DbSet<Users> Users { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<Ticket>(entity =>
+        modelBuilder.Entity<Users>(entity =>
         {
-            entity
-                .HasNoKey()
-                .ToTable("ticket");
+            entity.HasKey(e => e.Id).HasName("users_pkey");
 
-            entity.Property(e => e.AnydeskId)
-                .HasMaxLength(12)
-                .HasColumnName("anydesk_id");
-            entity.Property(e => e.CreationTime).HasColumnName("creation_time");
-            entity.Property(e => e.Description)
-                .HasMaxLength(499)
-                .HasColumnName("description");
-            entity.Property(e => e.Issolved).HasColumnName("issolved");
-            entity.Property(e => e.TicketId).HasColumnName("ticket_id");
-        });
+            entity.ToTable("users");
 
-        modelBuilder.Entity<User>(entity =>
-        {
-            entity.HasKey(e => e.Id).HasName("user_pkey");
-
-            entity.ToTable("user");
-
-            entity.HasIndex(e => e.Email, "user_email_key").IsUnique();
+            entity.HasIndex(e => e.Email, "users_email_key").IsUnique();
 
             entity.Property(e => e.Id).HasColumnName("id");
             entity.Property(e => e.Email)

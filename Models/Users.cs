@@ -7,15 +7,15 @@ using System.ComponentModel.DataAnnotations;
 
 namespace DataSibTerminal.Models;
 
-public partial class User
+public partial class Users
 {
-    
     public int Id { get; set; }
+    
     public string Name { get; set; }
+    [EmailAddress]
     [Required]
-    [EmailAddress(ErrorMessage = "Email adress is required")]
     public string Email { get; set; }
-    [Required]
     [PasswordPropertyText]
+    [Required]
     public string Password { get; set; }
 }
