@@ -1,10 +1,6 @@
 {
   "Files": [
     {
-      "Id": "C:\\csharp\\DatasibTerminal\\DataSibTerminal\\obj\\Debug\\net7.0\\scopedcss\\projectbundle\\DataSibTerminal.bundle.scp.css",
-      "PackagePath": "staticwebassets\\DataSibTerminal.bundle.scp.css"
-    },
-    {
       "Id": "C:\\csharp\\DatasibTerminal\\DataSibTerminal\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },

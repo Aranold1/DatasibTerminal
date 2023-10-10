@@ -7,6 +7,8 @@ namespace DataSibTerminal.Models;
 
 public partial class Ticket
 {
+    public bool? Issolved { get; set; }
+
     public int? TicketId { get; set; }
 
     public string Description { get; set; }

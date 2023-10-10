@@ -15,6 +15,8 @@ public partial class postgresContext : DbContext
 
     public virtual DbSet<Ticket> Ticket { get; set; }
 
+    public virtual DbSet<User> User { get; set; }
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<Ticket>(entity =>
@@ -30,7 +32,30 @@ public partial class postgresContext : DbContext
             entity.Property(e => e.Description)
                 .HasMaxLength(499)
                 .HasColumnName("description");
+            entity.Property(e => e.Issolved).HasColumnName("issolved");
             entity.Property(e => e.TicketId).HasColumnName("ticket_id");
+        });
+
+        modelBuilder.Entity<User>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("user_pkey");
+
+            entity.ToTable("user");
+
+            entity.HasIndex(e => e.Email, "user_email_key").IsUnique();
+
+            entity.Property(e => e.Id).HasColumnName("id");
+            entity.Property(e => e.Email)
+                .IsRequired()
+                .HasMaxLength(50)
+                .HasColumnName("email");
+            entity.Property(e => e.Name)
+                .IsRequired()
+                .HasMaxLength(30)
+                .HasColumnName("name");
+            entity.Property(e => e.Password)
+                .HasMaxLength(30)
+                .HasColumnName("password");
         });
 
         OnModelCreatingPartial(modelBuilder);

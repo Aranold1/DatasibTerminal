@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "OGLHY1JbPIfduq/mbtlkVNVrockZAsw7w1JzCP0RZsk=",
+  "Hash": "seznzRQ5xRR8Id/Wobz2KMLmWSRQuYoCFBdOfId9w68=",
   "Source": "DataSibTerminal",
   "BasePath": "_content/DataSibTerminal",
   "Mode": "Default",
@@ -16,40 +16,6 @@
     }
   ],
   "Assets": [
-    {
-      "Identity": "C:\\csharp\\DatasibTerminal\\DataSibTerminal\\obj\\Debug\\net7.0\\scopedcss\\bundle\\DataSibTerminal.styles.css",
-      "SourceId": "DataSibTerminal",
-      "SourceType": "Computed",
-      "ContentRoot": "C:\\csharp\\DatasibTerminal\\DataSibTerminal\\obj\\Debug\\net7.0\\scopedcss\\bundle\\",
-      "BasePath": "_content/DataSibTerminal",
-      "RelativePath": "DataSibTerminal.styles.css",
-      "AssetKind": "All",
-      "AssetMode": "CurrentProject",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "ScopedCss",
-      "AssetTraitValue": "ApplicationBundle",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\csharp\\DatasibTerminal\\DataSibTerminal\\obj\\Debug\\net7.0\\scopedcss\\bundle\\DataSibTerminal.styles.css"
-    },
-    {
-      "Identity": "C:\\csharp\\DatasibTerminal\\DataSibTerminal\\obj\\Debug\\net7.0\\scopedcss\\projectbundle\\DataSibTerminal.bundle.scp.css",
-      "SourceId": "DataSibTerminal",
-      "SourceType": "Computed",
-      "ContentRoot": "C:\\csharp\\DatasibTerminal\\DataSibTerminal\\obj\\Debug\\net7.0\\scopedcss\\projectbundle\\",
-      "BasePath": "_content/DataSibTerminal",
-      "RelativePath": "DataSibTerminal.bundle.scp.css",
-      "AssetKind": "All",
-      "AssetMode": "Reference",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "ScopedCss",
-      "AssetTraitValue": "ProjectBundle",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\csharp\\DatasibTerminal\\DataSibTerminal\\obj\\Debug\\net7.0\\scopedcss\\projectbundle\\DataSibTerminal.bundle.scp.css"
-    },
     {
       "Identity": "C:\\csharp\\DatasibTerminal\\DataSibTerminal\\wwwroot\\css\\site.css",
       "SourceId": "DataSibTerminal",
