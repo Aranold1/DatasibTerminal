@@ -24,14 +24,11 @@
                     Login
                 </h1>
                 <form asp-action="LogIn" method="post">
-                    
                     <div class="form-group">
-                        <label asp-for="Email"></label>
-                        <input asp-for=Email class="credentialsEmail" type="text" placeholder="Email">
+                        <input asp-for=Email class="credentialsEmail" type="email" placeholder="Email">
                     </div>
                     <div class="form-group">
-                        <label asp-for="Password"></label>
-                        <input asp-for=Password class="credentialsPassword" type="text" placeholder="Password">
+                        <input asp-for=Password class="credentialsPassword" type="password" placeholder="Password">
                     </div>
                     <div class="buttons">
                         <div class="button1">

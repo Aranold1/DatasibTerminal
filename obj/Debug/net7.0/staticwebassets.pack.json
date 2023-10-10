@@ -1,10 +1,6 @@
 {
   "Files": [
     {
-      "Id": "C:\\csharp\\DatasibTerminal\\DataSibTerminal\\wwwroot\\css\\site.css",
-      "PackagePath": "staticwebassets\\css\\site.css"
-    },
-    {
       "Id": "C:\\csharp\\DatasibTerminal\\DataSibTerminal\\wwwroot\\favicon.ico",
       "PackagePath": "staticwebassets\\favicon.ico"
     },

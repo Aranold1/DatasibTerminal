@@ -23,7 +23,6 @@ namespace DataSibTerminal.Controllers
 
             if (ModelState.IsValid)
             {
-                
                 return RedirectToAction("TicketPage", "TicketCreationPage");
             }
             return View();
