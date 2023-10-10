@@ -2,29 +2,19 @@ body {
   background: #272727;
 }
 
-footer {
-  background: #313131;
-  height: 200px;
-}
-
 .main {
   display: flex;
   align-items: center;
   justify-content: center;
   margin-top: 150px;
   margin-bottom: 150px;
-}
 
-.loginWindow {
-  width: 500px;
-  height: 550px;
-  background-color: #272727;
 }
 
 .loginWindow {
   display: flex;
   width: 500px;
-  height: 600px;
+  height: 540px;
   background: #383838;
   border-radius: 8px;
   padding: 44px;
@@ -36,7 +26,7 @@ footer {
 
 .loginTitle {
   color: #FFF;
-  font-family: Montserrat;
+  font-family: Montserrat, Arial;
   font-size: 40px;
   font-style: normal;
   font-weight: 700;
@@ -49,7 +39,7 @@ footer {
 .credentialsPassword {
   width: 472px;
   height: 22px;
-  font-family: Montserrat;
+  font-family: Montserrat, Arial;
   font-size: 18px;
   font-weight: 500;
   border-radius: 8px;
@@ -93,7 +83,7 @@ footer {
   color: #FFF;
   border: none;
   text-align: center;
-  font-family: Montserrat;
+  font-family: Montserrat, Arial;
   font-size: 18px;
   font-style: normal;
   font-weight: 600;
@@ -110,7 +100,7 @@ footer {
   width: 180px;
   text-align: center;
   font-size: 14px;
-  font-family: Montserrat;
+  font-family: Montserrat, Arial;
   color: #FFF;
   transition: opacity 0.15s;
 }
