@@ -18,6 +18,13 @@ footer {
 .loginWindow {
   width: 500px;
   height: 550px;
+  background-color: #272727;
+}
+
+.loginWindow {
+  display: flex;
+  width: 500px;
+  height: 600px;
   background: #383838;
   border-radius: 8px;
   padding: 44px;
