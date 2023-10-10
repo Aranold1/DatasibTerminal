@@ -1,6 +1,8 @@
 ﻿using DataSibTerminal.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using System.Runtime.Intrinsics.Arm;
+using System.Security.Cryptography;
 
 namespace DataSibTerminal.Controllers
 {
@@ -18,9 +20,11 @@ namespace DataSibTerminal.Controllers
         }
         public IActionResult LogIn(User user)
         {
+
             if (ModelState.IsValid)
             {
-                return RedirectToAction("TicketCreation", "TicketCreationPage");
+                
+                return RedirectToAction("TicketPage", "TicketCreationPage");
             }
             return View();
         }
