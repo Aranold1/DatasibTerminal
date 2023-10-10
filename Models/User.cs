@@ -9,10 +9,13 @@ namespace DataSibTerminal.Models;
 
 public partial class User
 {
+    
     public int Id { get; set; }
     public string Name { get; set; }
-    [EmailAddress]
+    [Required]
+    [EmailAddress(ErrorMessage = "Email adress is required")]
     public string Email { get; set; }
+    [Required]
     [PasswordPropertyText]
     public string Password { get; set; }
 }
