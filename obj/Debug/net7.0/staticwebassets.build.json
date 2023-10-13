@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "q9bDLk9b0xAEDOf+W1SwDHvS98rKhYoXtvrXDeY6B+A=",
+  "Hash": "LKbXScp4w4mC5AXa3WLVXdAdaFzcpJhybxtm9KINK04=",
   "Source": "DataSibTerminal",
   "BasePath": "_content/DataSibTerminal",
   "Mode": "Default",
@@ -32,23 +32,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
-    },
-    {
-      "Identity": "C:\\csharp\\DatasibTerminal\\DataSibTerminal\\wwwroot\\js\\site.js",
-      "SourceId": "DataSibTerminal",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\csharp\\DatasibTerminal\\DataSibTerminal\\wwwroot\\",
-      "BasePath": "_content/DataSibTerminal",
-      "RelativePath": "js/site.js",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\js\\site.js"
     },
     {
       "Identity": "C:\\csharp\\DatasibTerminal\\DataSibTerminal\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",

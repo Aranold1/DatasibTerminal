@@ -16,6 +16,10 @@
    "T4TemplatePath": null,
    "Tables": [
       {
+         "Name": "public.ticket",
+         "ObjectType": 0
+      },
+      {
          "Name": "public.users",
          "ObjectType": 0
       }

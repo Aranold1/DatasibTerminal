@@ -8,14 +8,21 @@
 
   <ItemGroup>
     <Content Remove="wwwroot\css\loginPage.css" />
+    <Content Remove="wwwroot\css\sytemAdminLogin.css" />
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="wwwroot\css\sytemAdminLogin.css" />
     <None Include="wwwroot\css\loginPage.css" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="7.0.11" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="PureHtml\" />
+    <Folder Include="wwwroot\js\" />
   </ItemGroup>
 
 </Project>

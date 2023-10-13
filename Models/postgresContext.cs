@@ -13,10 +13,28 @@ public partial class postgresContext : DbContext
     {
     }
 
+    public virtual DbSet<Ticket> Ticket { get; set; }
+
     public virtual DbSet<Users> Users { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        modelBuilder.Entity<Ticket>(entity =>
+        {
+            entity
+                .HasNoKey()
+                .ToTable("ticket");
+
+            entity.Property(e => e.AnydeskId)
+                .HasMaxLength(12)
+                .HasColumnName("anydesk_id");
+            entity.Property(e => e.CreationTime).HasColumnName("creation_time");
+            entity.Property(e => e.Description)
+                .HasMaxLength(499)
+                .HasColumnName("description");
+            entity.Property(e => e.Issolved).HasColumnName("issolved");
+        });
+
         modelBuilder.Entity<Users>(entity =>
         {
             entity.HasKey(e => e.Id).HasName("users_pkey");

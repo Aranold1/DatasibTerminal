@@ -10,12 +10,12 @@ namespace DataSibTerminal.Models;
 public partial class Users
 {
     public int Id { get; set; }
-    
+
     public string Name { get; set; }
+    [Required]
     [EmailAddress]
-    [Required]
     public string Email { get; set; }
-    [PasswordPropertyText]
     [Required]
+    [PasswordPropertyText]
     public string Password { get; set; }
 }
