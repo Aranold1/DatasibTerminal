@@ -15,17 +15,13 @@ namespace DataSibTerminal.Controllers
         {
             _logger = logger;
             _postgresContext = postgresContext;
-            foreach(var u in _postgresContext.Users)
-            {
-                Console.WriteLine(u.Name);
-            }
+           
         }
         public IActionResult LogIn(Users user)
         {
-
             if (ModelState.IsValid)
             {
-                return RedirectToAction("TicketPage", "TicketCreationPage");
+                return RedirectToAction("CreateTicket", "TicketCreationPage");
             }
             return View();
         }

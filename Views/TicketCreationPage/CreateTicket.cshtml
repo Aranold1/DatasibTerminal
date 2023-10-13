@@ -1,5 +1,6 @@
 ﻿@using DataSibTerminal.Models
-@Model Ticket
+@model Ticket
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -45,10 +46,15 @@
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Опишите свою проблему здесь</h1>
-        <textarea></textarea>
-        <button>Отправить</button>
-    </div>
+    <form asp-action="CreateTicket" method="post">
+        <div class="container">
+            <h1>Опишите свою проблему здесь</h1>
+            <h4>Ваш Anydesk id:</h4>
+            <input asp-for="AnydeskId"/>                       
+            <textarea input asp-for="Description"></textarea>
+            <button type="submit">Отправить</button>
+        </div>
+    </form>
+
 </body>
 </html>

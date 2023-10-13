@@ -2,16 +2,14 @@
 #nullable disable
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace DataSibTerminal.Models;
 
 public partial class Ticket
 {
-    public bool? Issolved { get; set; }
-
+    public bool? Issolved { get; set; }=false;
     public string Description { get; set; }
-
     public string AnydeskId { get; set; }
-
-    public int? CreationTime { get; set; }
+    public double? CreationTime { get; set; }
 }
