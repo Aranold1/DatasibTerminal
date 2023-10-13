@@ -21,40 +21,12 @@ public partial class postgresContext : DbContext
     {
         modelBuilder.Entity<Ticket>(entity =>
         {
-            entity
-                .HasNoKey()
-                .ToTable("ticket");
-
-            entity.Property(e => e.AnydeskId)
-                .HasMaxLength(12)
-                .HasColumnName("anydesk_id");
-            entity.Property(e => e.CreationTime).HasColumnName("creation_time");
-            entity.Property(e => e.Description)
-                .HasMaxLength(499)
-                .HasColumnName("description");
-            entity.Property(e => e.Issolved).HasColumnName("issolved");
+            entity.HasKey(e => e.CreationTime).HasName("ticket_pkey");
         });
 
         modelBuilder.Entity<Users>(entity =>
         {
             entity.HasKey(e => e.Id).HasName("users_pkey");
-
-            entity.ToTable("users");
-
-            entity.HasIndex(e => e.Email, "users_email_key").IsUnique();
-
-            entity.Property(e => e.Id).HasColumnName("id");
-            entity.Property(e => e.Email)
-                .IsRequired()
-                .HasMaxLength(50)
-                .HasColumnName("email");
-            entity.Property(e => e.Name)
-                .IsRequired()
-                .HasMaxLength(30)
-                .HasColumnName("name");
-            entity.Property(e => e.Password)
-                .HasMaxLength(30)
-                .HasColumnName("password");
         });
 
         OnModelCreatingPartial(modelBuilder);

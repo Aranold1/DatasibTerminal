@@ -21,9 +21,11 @@ namespace DataSibTerminal.Controllers
             Console.WriteLine(ticket.Description);
             Console.WriteLine(ticket.AnydeskId);
             ticket.CreationTime = time;
-            postgresContext.Add(ticket);
-            postgresContext.SaveChanges();
-
+            if (ModelState.IsValid)
+            {
+                postgresContext.Add(ticket);
+                postgresContext.SaveChanges();
+            }
             return View();
         }
     }

@@ -2,14 +2,29 @@
 #nullable disable
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.EntityFrameworkCore;
 
 namespace DataSibTerminal.Models;
 
+[Table("ticket")]
 public partial class Ticket
 {
-    public bool? Issolved { get; set; }=false;
+    [Column("issolved")]
+    public bool? Issolved { get; set; } = false;
+
+    [Required]
+    [Column("description")]
+    [StringLength(499)]
     public string Description { get; set; }
+
+    [Required]
+    [Column("anydesk_id")]
+    [StringLength(12)]
     public string AnydeskId { get; set; }
-    public double? CreationTime { get; set; }
+
+    [Key]
+    [Column("creation_time")]
+    public double CreationTime { get; set; }
 }
