@@ -9,21 +9,21 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = DataSibTerminal
 build_property.RootNamespace = DataSibTerminal
-build_property.ProjectDir = C:\csharp\DatasibTerminal\DataSibTerminal\
+build_property.ProjectDir = c:\csharp\DatasibTerminal\DataSibTerminal\
 build_property.RazorLangVersion = 7.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\csharp\DatasibTerminal\DataSibTerminal
+build_property.MSBuildProjectDirectory = c:\csharp\DatasibTerminal\DataSibTerminal
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/csharp/DatasibTerminal/DataSibTerminal/Views/AuthorizationPage/LogIn.cshtml]
+[c:/csharp/DatasibTerminal/DataSibTerminal/Views/AuthorizationPage/LogIn.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aG9yaXphdGlvblBhZ2VcTG9nSW4uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/csharp/DatasibTerminal/DataSibTerminal/Views/AuthorizationPage/RegestrationPage.cshtml]
+[c:/csharp/DatasibTerminal/DataSibTerminal/Views/AuthorizationPage/RegestrationPage.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aG9yaXphdGlvblBhZ2VcUmVnZXN0cmF0aW9uUGFnZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/csharp/DatasibTerminal/DataSibTerminal/Views/TicketCreationPage/CreateTicket.cshtml]
+[c:/csharp/DatasibTerminal/DataSibTerminal/Views/TicketCreationPage/CreateTicket.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGlja2V0Q3JlYXRpb25QYWdlXENyZWF0ZVRpY2tldC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 

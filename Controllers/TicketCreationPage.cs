@@ -3,8 +3,6 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace DataSibTerminal.Controllers
 {
-
-
     public class TicketCreationPage : Controller
     {
 
@@ -14,17 +12,15 @@ namespace DataSibTerminal.Controllers
         {
             this.postgresContext = postgresContext;
         }
-        public IActionResult CreateTicket(Ticket ticket)
+        public async Task<IActionResult> CreateTicket(Ticket ticket)
         {
+            Console.WriteLine(DateTime.Now);
             long time = long.Parse(new string(DateTime.Now.ToString().Where(x => char.IsDigit(x)).ToArray()));
-            Console.WriteLine(time);
-            Console.WriteLine(ticket.Description);
-            Console.WriteLine(ticket.AnydeskId);
             ticket.CreationTime = time;
             if (ModelState.IsValid)
             {
                 postgresContext.Add(ticket);
-                postgresContext.SaveChanges();
+                await postgresContext.SaveChangesAsync();
             }
             return View();
         }

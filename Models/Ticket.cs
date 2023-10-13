@@ -16,7 +16,7 @@ public partial class Ticket
 
     [Required]
     [Column("description")]
-    [StringLength(499)]
+    [StringLength(2600)]
     public string Description { get; set; }
 
     [Required]
