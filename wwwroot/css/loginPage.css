@@ -96,15 +96,15 @@ body {
   opacity: 0.9;
 }
 
-.forgotPassword-link {
-  width: 180px;
-  text-align: center;
-  font-size: 14px;
-  font-family: Montserrat, Arial;
-  color: #FFF;
-  transition: opacity 0.15s;
+.loginAsSystemAdministator {
+    width: 180px;
+    text-align: center;
+    font-size: 14px;
+    font-family: Montserrat, Arial;
+    color: #FFF;
+    transition: opacity 0.15s;
 }
 
-.forgotPassword-link:hover {
-  opacity: 0.8;
+.loginAsSystemAdministator-link:hover {
+    opacity: 0.8;
 }
