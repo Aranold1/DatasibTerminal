@@ -1,0 +1,18 @@
+body {
+  background: #D9D9D9;
+}
+
+hr {
+  margin: auto;
+  height: 1px;
+  width: 80%;
+  border: none;
+  background: rgba(0, 0, 0, 0.30);
+}
+
+.main {
+  display: flex;
+  margin-left: -8px;
+  margin-top: -8px;
+}
+

@@ -1,0 +1,5 @@
+.textBox {
+  flex: 3;
+  min-width: 300px;
+  background: lightblue;
+}
