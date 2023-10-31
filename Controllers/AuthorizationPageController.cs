@@ -18,14 +18,23 @@ namespace DataSibTerminal.Controllers
         }
         public IActionResult LogIn(Users user)
         {
-            string? Login = HttpContext.Request.Headers.Cookie.FirstOrDefault(x=>x.StartsWith("login="));
-            string? Password = HttpContext.Request.Headers.Cookie.FirstOrDefault(x=>x.StartsWith("psswd="));
-            System.Console.WriteLine(Login+" login");
+            string? Email = HttpContext.Response.Headers.Cookie.FirstOrDefault(x=>x.StartsWith("email"));
+            string? Password = HttpContext.Response.Headers.Cookie.FirstOrDefault(x=>x.StartsWith("psswd"));
+            System.Console.WriteLine(Email);
+            System.Console.WriteLine(Password);
             if (ModelState.IsValid)
             {
+                
+                HttpContext.Response.Headers.Add("set-cookie", $"email=email:{user.Email}, password=pswwd:{user.Password}");
+              
+
                 return RedirectToAction("CreateTicket", "TicketCreationPage");
             }
             return View();
+        }
+        bool IsLoginAndPasswordValid()
+        {
+            return true;
         }
       
     }

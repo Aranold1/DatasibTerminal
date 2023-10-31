@@ -14,7 +14,6 @@ namespace DataSibTerminal.Controllers
         }
         public async Task<IActionResult> CreateTicket(Ticket ticket)
         {
-            Console.WriteLine(DateTime.Now);
             long time = long.Parse(new string(DateTime.Now.ToString().Where(x => char.IsDigit(x)).ToArray()));
             ticket.CreationTime = time;
             if (ModelState.IsValid)

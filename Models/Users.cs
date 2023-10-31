@@ -21,7 +21,6 @@ public partial class Users
     public string Name { get; set; }
 
     [Required]
-    [EmailAddress]
     [Column("email")]
     [StringLength(50)]
     public string Email { get; set; }
