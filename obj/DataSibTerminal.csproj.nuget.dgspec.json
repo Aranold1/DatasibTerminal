@@ -1,25 +1,32 @@
 {
   "format": 1,
   "restore": {
-    "/home/henry/work/DatasibTerminal/DataSibTerminal.csproj": {}
+    "H:\\projects\\datasibTerm_petProj\\DatasibTerminal\\DataSibTerminal.csproj": {}
   },
   "projects": {
-    "/home/henry/work/DatasibTerminal/DataSibTerminal.csproj": {
+    "H:\\projects\\datasibTerm_petProj\\DatasibTerminal\\DataSibTerminal.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/henry/work/DatasibTerminal/DataSibTerminal.csproj",
+        "projectUniqueName": "H:\\projects\\datasibTerm_petProj\\DatasibTerminal\\DataSibTerminal.csproj",
         "projectName": "DataSibTerminal",
-        "projectPath": "/home/henry/work/DatasibTerminal/DataSibTerminal.csproj",
-        "packagesPath": "/home/henry/.nuget/packages/",
-        "outputPath": "/home/henry/work/DatasibTerminal/obj/",
+        "projectPath": "H:\\projects\\datasibTerm_petProj\\DatasibTerminal\\DataSibTerminal.csproj",
+        "packagesPath": "C:\\Users\\egord\\.nuget\\packages\\",
+        "outputPath": "H:\\projects\\datasibTerm_petProj\\DatasibTerminal\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "/home/henry/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\egord\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net7.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -38,6 +45,18 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "dependencies": {
+            "Microsoft.AspNet.WebApi": {
+              "target": "Package",
+              "version": "[5.3.0, )"
+            },
+            "Microsoft.AspNet.WebApi.Client": {
+              "target": "Package",
+              "version": "[6.0.0, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.3, )"
+            },
             "Npgsql.EntityFrameworkCore.PostgreSQL": {
               "target": "Package",
               "version": "[7.0.11, )"
@@ -62,7 +81,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/lib/dotnet/sdk/7.0.113/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
         }
       }
     }
