@@ -22,12 +22,14 @@ namespace DataSibTerminal.Controllers
         }
         public async Task<IActionResult> LogIn(Users user)
         {
-            string? Email = HttpContext.Response.Headers.Cookie.FirstOrDefault(x=>x.StartsWith("email"));
-            string? Password = HttpContext.Response.Headers.Cookie.FirstOrDefault(x=>x.StartsWith("psswd"));
+          
+
+            
             if (ModelState.IsValid)
             {
                 var protector = _dataProtectionProvider.CreateProtector("auth-cookie");
-                HttpContext.Response.Headers.Add("set-cookie", $"email=email:{protector.Protect(user.Email)}, password=pswwd:{protector.Protect(user.Password)}");
+                Response.Cookies.Append("email",$"{protector.Protect(user.Email)}");
+                Response.Cookies.Append("psswd",$"{protector.Protect(user.Password)}");
                 return RedirectToAction("CreateTicket", "TicketCreationPage");
             }
             return View();
