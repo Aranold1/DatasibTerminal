@@ -1,4 +1,3 @@
-
 # Бинарные и временные файлы
 *.exe
 *.dll
@@ -11,7 +10,6 @@
 *.vssscc
 
 # Директории, создаваемые Visual Studio
-[Dd]ebug/
 [Rr]elease/
 obj/
 [Bb]in/
