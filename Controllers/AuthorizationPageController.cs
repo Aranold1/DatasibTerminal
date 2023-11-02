@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.Net.Http.Headers;
 using Newtonsoft.Json;
 using Microsoft.AspNetCore.DataProtection;
+using System.ComponentModel.DataAnnotations;
 
 
 namespace DataSibTerminal.Controllers
@@ -22,12 +23,12 @@ namespace DataSibTerminal.Controllers
         }
         public async Task<IActionResult> LogIn(Users user)
         {
-          
-
+            var protector = _dataProtectionProvider.CreateProtector("auth-cookie");
+            var email = Request.Cookies["email"];
+            var pass = Request.Cookies["psswd"];
             
             if (ModelState.IsValid)
             {
-                var protector = _dataProtectionProvider.CreateProtector("auth-cookie");
                 Response.Cookies.Append("email",$"{protector.Protect(user.Email)}");
                 Response.Cookies.Append("psswd",$"{protector.Protect(user.Password)}");
                 return RedirectToAction("CreateTicket", "TicketCreationPage");
