@@ -9,13 +9,13 @@ using System.ComponentModel.DataAnnotations;
 namespace DataSibTerminal.Controllers
 {
     [Route("/")]
-    public class AuthorizationPageController : Controller
+    public class AuthorizationPage : Controller
     {
-        private readonly ILogger<AuthorizationPageController> _logger;
+        private readonly ILogger<AuthorizationPage> _logger;
         //we gonna encapsulate it latter 
         private readonly postgresContext _postgresContext;
         private readonly IDataProtectionProvider _dataProtectionProvider;
-        public AuthorizationPageController(ILogger<AuthorizationPageController> logger, postgresContext postgresContext,IDataProtectionProvider idp)
+        public AuthorizationPage(ILogger<AuthorizationPage> logger, postgresContext postgresContext,IDataProtectionProvider idp)
         {
             _dataProtectionProvider = idp;
             _logger = logger;
@@ -35,7 +35,6 @@ namespace DataSibTerminal.Controllers
             }
             return View();
         }
-
 
         async Task<bool> IsLoginAndPasswordValid(string email,string password)
         {
