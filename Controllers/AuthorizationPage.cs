@@ -36,8 +36,12 @@ namespace DataSibTerminal.Controllers
                 claims.Add(new Claim(userForm.Email,usersDb.Name));
                 var identity = new ClaimsIdentity(claims,"cookie");
                 var user = new ClaimsPrincipal(identity);
-                await HttpContext.SignInAsync("cookie",user);
-                return RedirectToAction("CreateTicket", "TicketCreationPage");
+                bool res = await IsLoginAndPasswordValid(userForm.Email, userForm.Password);
+                if (res)
+                {
+                    await HttpContext.SignInAsync("cookie", user);
+                    return RedirectToAction("CreateTicket", "TicketCreationPage");
+                }
             }
             return View();
         }
@@ -48,13 +52,12 @@ namespace DataSibTerminal.Controllers
 
             Users dataToSend = new Users
             {
-                //сделай метод который получает айди и имя по почте
                 Id = 1,
                 Name = "sanek",
                 Email = email,
                 Password = password,
             };
-
+            bool isUserValid = false;
             using (var httpClient = new HttpClient())
             {
                 httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
@@ -66,16 +69,18 @@ namespace DataSibTerminal.Controllers
                 if (response.IsSuccessStatusCode)
                 {
                     string responseBody = await response.Content.ReadAsStringAsync();
-                    Console.WriteLine("Successfully sent data to the web API.");
-                    Console.WriteLine("Server response: " + responseBody);
+                    isUserValid = JsonConvert.DeserializeObject<bool>(responseBody);
+                   
+                    return isUserValid;
+                   
+
+
                 }
                 else
                 {
                     Console.WriteLine("Error sending data to the web API. Status code: " + response.StatusCode);
                 }
-                //заглушка чтобы комплилось 
-                return true;
-                //return res;
+                return isUserValid;
             }
         }
       
