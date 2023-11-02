@@ -3,7 +3,8 @@ using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+builder.Services.AddDataProtection();
+
 builder.Services.AddControllersWithViews();
 //this is test db, we gonna remove connection string latter (i promise) 
 builder.Services.AddDbContext<postgresContext>(options => options.UseNpgsql("Server=158.101.194.79;Port=3066;User Id=postgres;Password=3g0rvt3m3;Database=postgres"));

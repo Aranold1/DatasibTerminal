@@ -70,3 +70,8 @@ C:/csharp/DatasibTerminal/DataSibTerminal/obj/Debug/net7.0/DataSibTerminal.cspro
 /home/henry/work/DatasibTerminal/obj/Debug/net7.0/DataSibTerminal.pdb
 /home/henry/work/DatasibTerminal/obj/Debug/net7.0/DataSibTerminal.genruntimeconfig.cache
 /home/henry/work/DatasibTerminal/obj/Debug/net7.0/ref/DataSibTerminal.dll
+/home/henry/work/DatasibTerminal/bin/Debug/net7.0/System.Net.Http.Formatting.dll
+/home/henry/work/DatasibTerminal/bin/Debug/net7.0/System.Web.Http.dll
+/home/henry/work/DatasibTerminal/bin/Debug/net7.0/System.Web.Http.WebHost.dll
+/home/henry/work/DatasibTerminal/bin/Debug/net7.0/Newtonsoft.Json.dll
+/home/henry/work/DatasibTerminal/bin/Debug/net7.0/Newtonsoft.Json.Bson.dll
