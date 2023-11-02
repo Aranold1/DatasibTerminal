@@ -4,6 +4,9 @@ using System.Net.Http.Headers;
 using Newtonsoft.Json;
 using Microsoft.AspNetCore.DataProtection;
 using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Authentication;
+using System.Security.Claims;
+using Microsoft.EntityFrameworkCore;
 
 
 namespace DataSibTerminal.Controllers
@@ -21,16 +24,19 @@ namespace DataSibTerminal.Controllers
             _logger = logger;
             _postgresContext = postgresContext;
         }
-        public async Task<IActionResult> LogIn(Users user)
+        public async Task<IActionResult> LogIn(Users userForm)
         {
             var protector = _dataProtectionProvider.CreateProtector("auth-cookie");
-            var email = Request.Cookies["email"];
-            var pass = Request.Cookies["psswd"];
-            
             if (ModelState.IsValid)
-            {
-                Response.Cookies.Append("email",$"{protector.Protect(user.Email)}");
-                Response.Cookies.Append("psswd",$"{protector.Protect(user.Password)}");
+            {   
+                
+                var claims = new List<Claim>();
+                //some really bad code 
+                var usersDb = _postgresContext.Users.FirstOrDefault(x=>x.Email==userForm.Email);
+                claims.Add(new Claim(userForm.Email,usersDb.Name));
+                var identity = new ClaimsIdentity(claims,"cookie");
+                var user = new ClaimsPrincipal(identity);
+                await HttpContext.SignInAsync("cookie",user);
                 return RedirectToAction("CreateTicket", "TicketCreationPage");
             }
             return View();
