@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace DataSibTerminal.Controllers
 {
+    [Route("yourtickets")]
     public class TicketCreationPage : Controller
     {
 

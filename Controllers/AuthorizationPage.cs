@@ -3,18 +3,19 @@ using Microsoft.AspNetCore.Mvc;
 using System.Net.Http.Headers;
 using Newtonsoft.Json;
 using Microsoft.AspNetCore.DataProtection;
+using System.ComponentModel.DataAnnotations;
 
 
 namespace DataSibTerminal.Controllers
 {
     [Route("/")]
-    public class AuthorizationPageController : Controller
+    public class AuthorizationPage : Controller
     {
-        private readonly ILogger<AuthorizationPageController> _logger;
+        private readonly ILogger<AuthorizationPage> _logger;
         //we gonna encapsulate it latter 
         private readonly postgresContext _postgresContext;
         private readonly IDataProtectionProvider _dataProtectionProvider;
-        public AuthorizationPageController(ILogger<AuthorizationPageController> logger, postgresContext postgresContext,IDataProtectionProvider idp)
+        public AuthorizationPage(ILogger<AuthorizationPage> logger, postgresContext postgresContext,IDataProtectionProvider idp)
         {
             _dataProtectionProvider = idp;
             _logger = logger;
@@ -22,17 +23,18 @@ namespace DataSibTerminal.Controllers
         }
         public async Task<IActionResult> LogIn(Users user)
         {
-            string? Email = HttpContext.Response.Headers.Cookie.FirstOrDefault(x=>x.StartsWith("email"));
-            string? Password = HttpContext.Response.Headers.Cookie.FirstOrDefault(x=>x.StartsWith("psswd"));
+            var protector = _dataProtectionProvider.CreateProtector("auth-cookie");
+            var email = Request.Cookies["email"];
+            var pass = Request.Cookies["psswd"];
+            
             if (ModelState.IsValid)
             {
-                var protector = _dataProtectionProvider.CreateProtector("auth-cookie");
-                HttpContext.Response.Headers.Add("set-cookie", $"email=email:{protector.Protect(user.Email)}, password=pswwd:{protector.Protect(user.Password)}");
+                Response.Cookies.Append("email",$"{protector.Protect(user.Email)}");
+                Response.Cookies.Append("psswd",$"{protector.Protect(user.Password)}");
                 return RedirectToAction("CreateTicket", "TicketCreationPage");
             }
             return View();
         }
-
 
         async Task<bool> IsLoginAndPasswordValid(string email,string password)
         {
