@@ -33,6 +33,10 @@ namespace DataSibTerminal.Controllers
                 var claims = new List<Claim>();
                 //some really bad code 
                 var usersDb = _postgresContext.Users.FirstOrDefault(x=>x.Email==userForm.Email);
+                if(usersDb is null)
+                {
+                    return View("Login");
+                }
                 claims.Add(new Claim(userForm.Email,usersDb.Name));
                 var identity = new ClaimsIdentity(claims,"cookie");
                 var user = new ClaimsPrincipal(identity);
