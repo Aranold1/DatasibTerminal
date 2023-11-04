@@ -56,12 +56,12 @@ namespace DataSibTerminal.Controllers
 
             Users dataToSend = new Users
             {
-                Id = 1,
-                Name = "sanek",
+                Name = "Class",
+                Id = 777,
                 Email = email,
                 Password = password,
             };
-            bool isUserValid = false;
+           
             using (var httpClient = new HttpClient())
             {
                 httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
@@ -73,19 +73,15 @@ namespace DataSibTerminal.Controllers
                 if (response.IsSuccessStatusCode)
                 {
                     string responseBody = await response.Content.ReadAsStringAsync();
-                    isUserValid = JsonConvert.DeserializeObject<bool>(responseBody);
-                   
-                    return isUserValid;
-                   
-
-
+                    return JsonConvert.DeserializeObject<bool>(responseBody);
+                
                 }
                 else
                 {
                     Console.WriteLine("Error sending data to the web API. Status code: " + response.StatusCode);
                 }
-                return isUserValid;
             }
+            return false;
         }
       
     }
