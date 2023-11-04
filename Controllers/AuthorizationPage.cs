@@ -4,6 +4,9 @@ using System.Net.Http.Headers;
 using Newtonsoft.Json;
 using Microsoft.AspNetCore.DataProtection;
 using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Authentication;
+using System.Security.Claims;
+using Microsoft.EntityFrameworkCore;
 
 
 namespace DataSibTerminal.Controllers
@@ -21,17 +24,28 @@ namespace DataSibTerminal.Controllers
             _logger = logger;
             _postgresContext = postgresContext;
         }
-        public async Task<IActionResult> LogIn(Users user)
+        public async Task<IActionResult> LogIn(Users userForm)
         {
             var protector = _dataProtectionProvider.CreateProtector("auth-cookie");
-            var email = Request.Cookies["email"];
-            var pass = Request.Cookies["psswd"];
-            
             if (ModelState.IsValid)
-            {
-                Response.Cookies.Append("email",$"{protector.Protect(user.Email)}");
-                Response.Cookies.Append("psswd",$"{protector.Protect(user.Password)}");
-                return RedirectToAction("CreateTicket", "TicketCreationPage");
+            {   
+                
+                var claims = new List<Claim>();
+                //some really bad code 
+                var usersDb = _postgresContext.Users.FirstOrDefault(x=>x.Email==userForm.Email);
+                if(usersDb is null)
+                {
+                    return View("Login");
+                }
+                claims.Add(new Claim(userForm.Email,usersDb.Name));
+                var identity = new ClaimsIdentity(claims,"cookie");
+                var user = new ClaimsPrincipal(identity);
+                bool res = await IsLoginAndPasswordValid(userForm.Email, userForm.Password);
+                if (res)
+                {
+                    await HttpContext.SignInAsync("cookie", user);
+                    return RedirectToAction("CreateTicket", "TicketCreationPage");
+                }
             }
             return View();
         }
@@ -42,13 +56,12 @@ namespace DataSibTerminal.Controllers
 
             Users dataToSend = new Users
             {
-                //сделай метод который получает айди и имя по почте
-                Id = 1,
-                Name = "sanek",
+                Name = "Class",
+                Id = 777,
                 Email = email,
                 Password = password,
             };
-
+           
             using (var httpClient = new HttpClient())
             {
                 httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
@@ -60,17 +73,15 @@ namespace DataSibTerminal.Controllers
                 if (response.IsSuccessStatusCode)
                 {
                     string responseBody = await response.Content.ReadAsStringAsync();
-                    Console.WriteLine("Successfully sent data to the web API.");
-                    Console.WriteLine("Server response: " + responseBody);
+                    return JsonConvert.DeserializeObject<bool>(responseBody);
+                
                 }
                 else
                 {
                     Console.WriteLine("Error sending data to the web API. Status code: " + response.StatusCode);
                 }
-                //заглушка чтобы комплилось 
-                return true;
-                //return res;
             }
+            return false;
         }
       
     }

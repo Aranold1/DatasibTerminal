@@ -1,9 +1,12 @@
-﻿using DataSibTerminal.Models;
+﻿using System.ComponentModel.DataAnnotations;
+using DataSibTerminal.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DataSibTerminal.Controllers
 {
     [Route("yourtickets")]
+    [Authorize("cookie")]
     public class TicketCreationPage : Controller
     {
 
