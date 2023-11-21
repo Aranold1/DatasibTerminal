@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "/home/henry/work/DatasibTerminal/DataSibTerminal.csproj": {}
+    "/home/gerry/WebDev/DatasibTerminal/DataSibTerminal.csproj": {}
   },
   "projects": {
-    "/home/henry/work/DatasibTerminal/DataSibTerminal.csproj": {
+    "/home/gerry/WebDev/DatasibTerminal/DataSibTerminal.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/henry/work/DatasibTerminal/DataSibTerminal.csproj",
+        "projectUniqueName": "/home/gerry/WebDev/DatasibTerminal/DataSibTerminal.csproj",
         "projectName": "DataSibTerminal",
-        "projectPath": "/home/henry/work/DatasibTerminal/DataSibTerminal.csproj",
-        "packagesPath": "/home/henry/.nuget/packages/",
-        "outputPath": "/home/henry/work/DatasibTerminal/obj/",
+        "projectPath": "/home/gerry/WebDev/DatasibTerminal/DataSibTerminal.csproj",
+        "packagesPath": "/home/gerry/.nuget/packages/",
+        "outputPath": "/home/gerry/WebDev/DatasibTerminal/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/home/henry/.nuget/NuGet/NuGet.Config"
+          "/home/gerry/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net7.0"
@@ -46,6 +46,10 @@
               "target": "Package",
               "version": "[6.0.0, )"
             },
+            "Microsoft.EntityFrameworkCore.Analyzers": {
+              "target": "Package",
+              "version": "[7.0.11, )"
+            },
             "Newtonsoft.Json": {
               "target": "Package",
               "version": "[13.0.3, )"
@@ -74,7 +78,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/lib/dotnet/sdk/7.0.113/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/7.0.404/RuntimeIdentifierGraph.json"
         }
       }
     }

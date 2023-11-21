@@ -31,8 +31,18 @@ namespace DataSibTerminal.Controllers
             {   
                 
                 var claims = new List<Claim>();
-                //some really bad code 
-                var usersDb = _postgresContext.Users.FirstOrDefault(x=>x.Email==userForm.Email);
+                //some really bad code
+                var usersDb = new Users();
+                try
+                {
+                    usersDb = _postgresContext.Users.FirstOrDefault(x=>x.Email==userForm.Email);
+                }
+                catch
+                {
+                    System.Console.WriteLine("db is dead");
+                    return View("Login");
+
+                }
                 if(usersDb is null)
                 {
                     return View("Login");
