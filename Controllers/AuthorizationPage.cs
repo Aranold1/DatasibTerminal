@@ -18,7 +18,7 @@ namespace DataSibTerminal.Controllers
         //we gonna encapsulate it latter 
         private readonly postgresContext _postgresContext;
         private readonly IDataProtectionProvider _dataProtectionProvider;
-        public AuthorizationPage(ILogger<AuthorizationPage> logger, postgresContext postgresContext,IDataProtectionProvider idp)
+        public AuthorizationPage(ILogger<AuthorizationPage> logger, postgresContext postgresContext, IDataProtectionProvider idp)
         {
             _dataProtectionProvider = idp;
             _logger = logger;
@@ -28,39 +28,48 @@ namespace DataSibTerminal.Controllers
         {
             var protector = _dataProtectionProvider.CreateProtector("auth-cookie");
             if (ModelState.IsValid)
-            {   
-                
+            {
+
                 var claims = new List<Claim>();
                 //some really bad code
                 var usersDb = new Users();
                 try
                 {
-                    usersDb = _postgresContext.Users.FirstOrDefault(x=>x.Email==userForm.Email);
+                    usersDb = _postgresContext.Users.FirstOrDefault(x => x.Email == userForm.Email);
                 }
                 catch
                 {
-                    System.Console.WriteLine("db is dead");
+                    await Console.Out.WriteLineAsync("db is dead");
                     return View("Login");
 
                 }
-                if(usersDb is null)
+                if (usersDb is null)
                 {
+                    await Console.Out.WriteLineAsync("user is null");
                     return View("Login");
                 }
-                claims.Add(new Claim(userForm.Email,usersDb.Name));
-                var identity = new ClaimsIdentity(claims,"cookie");
+                claims.Add(new Claim(userForm.Email, usersDb.Name));
+                var identity = new ClaimsIdentity(claims, "cookie");
                 var user = new ClaimsPrincipal(identity);
-                bool res = await IsLoginAndPasswordValid(userForm.Email, userForm.Password);
-                if (res)
+                try
                 {
-                    await HttpContext.SignInAsync("cookie", user);
-                    return RedirectToAction("CreateTicket", "TicketCreationPage");
+                    bool res = await IsLoginAndPasswordValid(userForm.Email, userForm.Password);
+                    if (res)
+                    {
+                        await HttpContext.SignInAsync("cookie", user);
+                        return RedirectToAction("CreateTicket", "TicketCreationPage");
+                    }
+                }
+                catch
+                {
+                    await Console.Out.WriteLineAsync("auth microservies is dead");
+                    return View("Login");
                 }
             }
             return View();
         }
 
-        async Task<bool> IsLoginAndPasswordValid(string email,string password)
+        async Task<bool> IsLoginAndPasswordValid(string email, string password)
         {
             string apiUrl = "http://158.101.194.79:5003/api/authorization   "; //url 
 
@@ -71,7 +80,7 @@ namespace DataSibTerminal.Controllers
                 Email = email,
                 Password = password,
             };
-           
+
             using (var httpClient = new HttpClient())
             {
                 httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
@@ -84,7 +93,7 @@ namespace DataSibTerminal.Controllers
                 {
                     string responseBody = await response.Content.ReadAsStringAsync();
                     return JsonConvert.DeserializeObject<bool>(responseBody);
-                
+
                 }
                 else
                 {
@@ -93,6 +102,6 @@ namespace DataSibTerminal.Controllers
             }
             return false;
         }
-      
+
     }
 }
