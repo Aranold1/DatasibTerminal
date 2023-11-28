@@ -14,19 +14,25 @@ namespace DataSibTerminal.Controllers
     [Route("/")]
     public class AuthorizationPage : Controller
     {
+        
         private readonly ILogger<AuthorizationPage> _logger;
         //we gonna encapsulate it latter 
         private readonly postgresContext _postgresContext;
-        private readonly IDataProtectionProvider _dataProtectionProvider;
         public AuthorizationPage(ILogger<AuthorizationPage> logger, postgresContext postgresContext, IDataProtectionProvider idp)
         {
-            _dataProtectionProvider = idp;
             _logger = logger;
             _postgresContext = postgresContext;
         }
         public async Task<IActionResult> LogIn(Users userForm)
         {
-            var protector = _dataProtectionProvider.CreateProtector("auth-cookie");
+            var UserClaims = User.Claims;
+            foreach (var item in UserClaims)
+            {
+                System.Console.WriteLine(item.Value+"-claim");
+                System.Console.WriteLine((item.Type));
+              
+            }
+            
             if (ModelState.IsValid)
             {
 
@@ -48,14 +54,16 @@ namespace DataSibTerminal.Controllers
                     await Console.Out.WriteLineAsync("user is null");
                     return View("Login");
                 }
-                claims.Add(new Claim(userForm.Email, usersDb.Name));
-                var identity = new ClaimsIdentity(claims, "cookie");
-                var user = new ClaimsPrincipal(identity);
+                
                 try
                 {
                     bool res = await IsLoginAndPasswordValid(userForm.Email, userForm.Password);
                     if (res)
                     {
+                        claims.Add(new Claim("Name", usersDb.Name));
+                        claims.Add(new Claim("Email", usersDb.Email));
+                        var identity = new ClaimsIdentity(claims, "cookie");
+                        var user = new ClaimsPrincipal(identity);
                         await HttpContext.SignInAsync("cookie", user);
                         return RedirectToAction("CreateTicket", "TicketCreationPage");
                     }
@@ -71,7 +79,7 @@ namespace DataSibTerminal.Controllers
 
         async Task<bool> IsLoginAndPasswordValid(string email, string password)
         {
-            string apiUrl = "http://158.101.194.79:5003/api/authorization   "; //url 
+            string apiUrl = "http://158.101.194.79:5003/api/authorization  "; //url 
 
             Users dataToSend = new Users
             {
