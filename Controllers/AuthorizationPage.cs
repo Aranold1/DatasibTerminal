@@ -26,17 +26,15 @@ namespace DataSibTerminal.Controllers
         public async Task<IActionResult> LogIn(Users userForm)
         {
             var UserClaims = User.Claims;
-            foreach (var item in UserClaims)
+            if (User.IsInRole("SimpleUser"))
             {
-                System.Console.WriteLine(item.Value+"-claim");
-                System.Console.WriteLine((item.Type));
-              
+                return RedirectToAction("CreateTicket", "TicketCreationPage");
             }
             
             if (ModelState.IsValid)
             {
 
-                var claims = new List<Claim>();
+               
                 //some really bad code
                 var usersDb = new Users();
                 try
@@ -60,11 +58,15 @@ namespace DataSibTerminal.Controllers
                     bool res = await IsLoginAndPasswordValid(userForm.Email, userForm.Password);
                     if (res)
                     {
-                        claims.Add(new Claim("Name", usersDb.Name));
-                        claims.Add(new Claim("Email", usersDb.Email));
-                        var identity = new ClaimsIdentity(claims, "cookie");
+                        var claims = new List<Claim>(new Claim[]
+                        {
+                            new Claim(ClaimTypes.NameIdentifier, usersDb.Email),
+                            new Claim("User", "SimpleUser")
+                        });
+                        
+                        var identity = new ClaimsIdentity(claims,"cookie",nameType:null,roleType:"User");
                         var user = new ClaimsPrincipal(identity);
-                        await HttpContext.SignInAsync("cookie", user);
+                        await HttpContext.SignInAsync(user);
                         return RedirectToAction("CreateTicket", "TicketCreationPage");
                     }
                 }
