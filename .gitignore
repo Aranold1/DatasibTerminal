@@ -8,6 +8,7 @@
 *.log
 *.vspscc
 *.vssscc
+*.vsidx
 
 # Директории, создаваемые Visual Studio
 [Rr]elease/
