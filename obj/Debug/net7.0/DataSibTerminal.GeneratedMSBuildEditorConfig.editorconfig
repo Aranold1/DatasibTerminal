@@ -16,8 +16,8 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = /home/henry/work/DatasibTerminal
 build_property._RazorSourceGeneratorDebug = 
 
-[/home/henry/work/DatasibTerminal/Views/AdminPage/main.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWRtaW5QYWdlL21haW4uY3NodG1s
+[/home/henry/work/DatasibTerminal/Views/AdminPage/Main.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWRtaW5QYWdlL01haW4uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [/home/henry/work/DatasibTerminal/Views/AuthorizationPage/LogIn.cshtml]
