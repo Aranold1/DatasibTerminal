@@ -1,3 +1,49 @@
-HTML merging
-/bin
+# Бинарные и временные файлы
+*.exe
+*.dll
+*.pdb
+*.user
+*.suo
+*.cache
+*.log
+*.vspscc
+*.vssscc
+*.vsidx
+
+# Директории, создаваемые Visual Studio
+[Rr]elease/
 /obj
+[Bb]in/
+
+# Файлы и папки, связанные с пакетным менеджером NuGet
+packages/
+*.nupkg
+project.lock.json
+
+# Файлы, связанные с ReSharper (если используется ReSharper)
+_ReSharper/
+[Rr]eSharper.user
+*.sln.DotSettings
+
+# Личные файлы Visual Studio
+.suo
+*.user
+*.suo
+*.userprefs
+*.sln.docstates
+
+# Кеш и временные файлы
+[Tt]humbs.db
+[Dd]esktop.ini
+[Ss]shKnownHosts
+
+# Файлы и папки, связанные с отладочной информацией и кешем Roslyn (для C#)
+*.suo
+# Roslyn cache directories
+*.ide
+.vscode
+.vs2017
+.vs2019
+.vs2022
+*.vscode
+*.sln.ide
