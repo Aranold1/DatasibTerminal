@@ -49,7 +49,7 @@
     <form asp-action="CreateTicket" method="post">
         <div class="container">
             <label asp-for="AnydeskId"></label>
-            <input asp-for="AnydeskId" pattern="\d+" title="Введите только цифры" required />
+            <input asp-for="AnydeskId" pattern="\d+" title="Введите только цифры"  />
             <span asp-validation-for="AnydeskId"></span>
 
             <label asp-for="Description"></label>

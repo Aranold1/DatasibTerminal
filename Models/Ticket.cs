@@ -15,14 +15,14 @@ public partial class Ticket
     public bool? Issolved { get; set; } = false;
 
     [Display(Name = "опишите вашу проблему")]
-    [Required(ErrorMessage ="это поле обязательно для ввода")]
+    [Required]
     [Column("description")]
     [StringLength(2600)]
     public string Description { get; set; }
 
 
     [Display(Name = "укажите ваш anydesk id")]
-    [Required(ErrorMessage = "это поле обязательно для ввода")]
+    [Required]
     [Column("anydesk_id")]
     [StringLength(12)]
     public string AnydeskId { get; set; }
