@@ -1,16 +1,37 @@
-using DataSibTerminal.Models;
-using Microsoft.AspNetCore.Mvc;
-using System.Net.Http.Headers;
-using Newtonsoft.Json;
-using Microsoft.AspNetCore.DataProtection;
 using System.ComponentModel.DataAnnotations;
+using DataSibTerminal.Models;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Routing;
+using Microsoft.EntityFrameworkCore;
 
 
 namespace DataSibTerminal.Controllers
 {
-    [Route("adminpage")]
     public class AdminPage :Controller
     {
+        postgresContext postgresDb;
 
+
+        public AdminPage(postgresContext pg)
+        {
+            postgresDb = pg;
+
+        }
+
+        [HttpGet("main")]
+        public async Task<IActionResult> Main()
+        {
+
+            Task<List<Ticket>> ticketListTask = postgresDb.Ticket.ToListAsync();
+
+            
+            List<Ticket> ticketList = await ticketListTask;
+            ViewData["TicketList"] = ticketList;
+
+
+
+            return View("Main");
+        }
     }
 }

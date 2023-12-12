@@ -1,7 +1,78 @@
 @using DataSibTerminal.Models;
-@model Users
+@model Ticket
 @{
     Layout = null;
+    List<Ticket> ticketList = ViewData["TicketList"] as List<Ticket>;
 }
 
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page</title>
+    <link rel="stylesheet" href="/css/leftBar.css">
+    <link rel="stylesheet" href="/css/middleBar.css">
+    <link rel="stylesheet" href="/css/rightBar.css">
+    <link rel="stylesheet" href="/css/mainPage.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="main">
+        <div class="leftMenu">
+            <button class="hamburgerMenu">
+                <img src="styles/svg/menu.svg" class="menuSVG">
+            </button>
+            <button class="adminProfile">
+                <img src="styles/example/adminPfp.jpg" class="adminPfp">
+            </button>
+        </div>
+        <div class="searchNInbox">
+            <div class="searchbar">
+                <input class="searchbar-input" type="search" placeholder="Search">
+            </div>
+            <div class="backing">
+                <ul class="inbox">
+                    @foreach (var ticket in ticketList)
+                    {
+                        <li>
+                            <button class="msg-button">
+                                <div class="msg">
+                                    <h2 class="msgSenderName">
+                                        @ticket.Issolved
+                                    </h2>
+                                    <h3 class="msgSubject">
+                                        @ticket.AnydeskId
+                                    </h3>
+                                    <p class="msgText">
+                                        @ticket.Description
+                                    </p>
+                                </div>
+                            </button>
+                        </li>
+                        <hr>
+                    }
+
+
+                </ul>
+            </div>
+        </div>
+        <div class="textBox">
+            <div class="topBar">
+                <div class="fillerName1">
+                </div>
+            </div>
+            <div class="msgFullText">
+            </div>
+            <div class="inputMsg">
+                <input class="inputMsg-input" id="sendMsg" placeholder="Message">
+                <button class="sendMsg-button" form="#sendMsg">Send</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

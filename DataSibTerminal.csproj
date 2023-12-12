@@ -8,10 +8,22 @@
 
   <ItemGroup>
     <Content Remove="wwwroot\css\loginPage.css" />
+    <Content Remove="wwwroot\css\styles\example\adminPfp.jpg" />
+    <Content Remove="wwwroot\css\styles\leftBar.css" />
+    <Content Remove="wwwroot\css\styles\mainPage.css" />
+    <Content Remove="wwwroot\css\styles\middleBar.css" />
+    <Content Remove="wwwroot\css\styles\rightBar.css" />
+    <Content Remove="wwwroot\css\styles\svg\menu.svg" />
     <Content Remove="wwwroot\css\sytemAdminLogin.css" />
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="wwwroot\css\styles\example\adminPfp.jpg" />
+    <None Include="wwwroot\css\leftBar.css" />
+    <None Include="wwwroot\css\mainPage.css" />
+    <None Include="wwwroot\css\middleBar.css" />
+    <None Include="wwwroot\css\rightBar.css" />
+    <None Include="wwwroot\css\styles\svg\menu.svg" />
     <None Include="wwwroot\css\sytemAdminLogin.css" />
     <None Include="wwwroot\css\loginPage.css" />
   </ItemGroup>

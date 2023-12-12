@@ -1,6 +1,22 @@
 {
   "Files": [
     {
+      "Id": "H:\\projects\\datasibTerm_petProj\\DatasibTerminal\\wwwroot\\css\\leftBar.css",
+      "PackagePath": "staticwebassets\\css\\leftBar.css"
+    },
+    {
+      "Id": "H:\\projects\\datasibTerm_petProj\\DatasibTerminal\\wwwroot\\css\\mainPage.css",
+      "PackagePath": "staticwebassets\\css\\mainPage.css"
+    },
+    {
+      "Id": "H:\\projects\\datasibTerm_petProj\\DatasibTerminal\\wwwroot\\css\\middleBar.css",
+      "PackagePath": "staticwebassets\\css\\middleBar.css"
+    },
+    {
+      "Id": "H:\\projects\\datasibTerm_petProj\\DatasibTerminal\\wwwroot\\css\\rightBar.css",
+      "PackagePath": "staticwebassets\\css\\rightBar.css"
+    },
+    {
       "Id": "H:\\projects\\datasibTerm_petProj\\DatasibTerminal\\wwwroot\\favicon.ico",
       "PackagePath": "staticwebassets\\favicon.ico"
     },
