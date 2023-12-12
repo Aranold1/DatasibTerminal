@@ -30,4 +30,10 @@ public partial class Ticket
     [Key]
     [Column("creation_time")]
     public double CreationTime { get; set; }
+    
+    [Column("user_id")]
+    public int user_id { get; set; }
+
+    [Column("username")]
+    public string username { get; set; }
 }

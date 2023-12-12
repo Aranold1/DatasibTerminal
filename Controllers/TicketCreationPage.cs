@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using DataSibTerminal.Models;
+using DataSibTerminal.Controllers;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Routing;
@@ -22,6 +23,7 @@ namespace DataSibTerminal.Controllers
         {
             long time = long.Parse(new string(DateTime.Now.ToString().Where(x => char.IsDigit(x)).ToArray()));
             ticket.CreationTime = time;
+            
             if (ModelState.IsValid)
             {
                 postgresContext.Add(ticket);

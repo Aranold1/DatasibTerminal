@@ -83,10 +83,8 @@ namespace DataSibTerminal.Controllers
         {
             string apiUrl = "http://158.101.194.79:5003/api/authorization  "; //url 
 
-            Users dataToSend = new Users
+            Users_DTO dataToSend = new Users_DTO
             {
-                Name = "Class",
-                Id = 777,
                 Email = email,
                 Password = password,
             };
