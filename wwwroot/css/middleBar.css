@@ -1,0 +1,87 @@
+.searchNInbox {
+  flex: 1;
+  min-width: 280px;
+  max-width: 320px;
+  background: #1F1F1F;
+}
+
+.searchbar {
+  padding-left: 16px;
+  padding-right: 16px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  background: #272727;
+}
+
+.searchbar-input {
+  border: none;
+  background: #383838;
+  border-radius: 8px;
+  padding: 8px;
+  width: 100%;
+  height: 40px;
+  color: rgba(255, 255, 255, 0.6);
+  font-family: Montserrat, Arial;
+  outline: none;
+}
+
+.searchbar-input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+  font-family: Montserrat, Arial;
+}
+
+.backing {
+  background: #272727;
+  border-radius: 12px 12px 0px 0px;
+}
+
+.inbox {
+  margin-top: 4px;
+  border-radius: 12px;
+  background: #272727;
+}
+
+.msg {
+  height: 145px;
+  border-radius: 12px;
+  padding-right: 14px
+}
+
+.msg-button {
+  border: none;
+  border-radius: 12px;
+  background: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.msg-button:active {
+  background: #383838;
+}
+
+.msgSenderName {
+  color: white;
+  text-align: left;
+  font-family: Montserrat, Arial;
+  font-weight: 600;
+  margin: 0;
+  padding: 20px 0 0 16px;
+}
+
+.msgSubject {
+  color: white;
+  text-align: left;
+  font-family: Montserrat, Arial;
+  font-weight: 500;
+  margin: 0;
+  padding: 2px 0 0 16px;
+}
+
+.msgText {
+  color: rgba(255, 255, 255, 0.6);
+  text-align: left;
+  font-family: Montserrat, Arial;
+  font-weight: 400;
+  margin: 0;
+  padding: 4px 0 0 16px;
+}

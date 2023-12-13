@@ -1,0 +1,25 @@
+.leftMenu {
+  width: 56px;
+  background: #E7492F;
+}
+
+.hamburgerMenu,
+  .adminProfile {
+  border: none;
+  background: none;
+  width: 100%;
+  cursor: pointer;
+  padding: 0;
+  margin-top: 4px;
+}
+
+.menuSVG {
+  width: 32px;
+}
+
+.adminPfp {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  object-fit: cover;
+}
