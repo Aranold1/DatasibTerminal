@@ -48,14 +48,10 @@
 <body>
     <form asp-action="CreateTicket" method="post">
         <div class="container">
-            <label asp-for="AnydeskId"></label>
-            <input asp-for="AnydeskId" pattern="\d+" title="Введите только цифры"  />
-            <span asp-validation-for="AnydeskId"></span>
-
-            <label asp-for="Description"></label>
-            <textarea asp-for="Description" required></textarea>
-            <span asp-validation-for="Description"></span>
-
+            <h1>Опишите свою проблему здесь</h1>
+            <h4>Ваш Anydesk id:</h4>
+            <input asp-for="AnydeskId" />
+            <textarea input asp-for="Description"></textarea>
             <button type="submit">Отправить</button>
         </div>
     </form>

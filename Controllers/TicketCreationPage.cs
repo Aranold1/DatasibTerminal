@@ -21,6 +21,20 @@ namespace DataSibTerminal.Controllers
         }
         public async Task<IActionResult> CreateTicket(Ticket ticket)
         {
+            string name = "";
+            foreach (var item in User.Claims.ToList())
+            {
+                await Console.Out.WriteLineAsync(item.Value);
+                if (item.Value.Contains("User:"))
+                {
+
+                    await Console.Out.WriteLineAsync(item.Value);
+                    name = item.Value.Split("User:").Last();
+                }
+            }
+            await Console.Out.WriteLineAsync("output");
+            await Console.Out.WriteLineAsync(name);
+            ticket.username = name;
             long time = long.Parse(new string(DateTime.Now.ToString().Where(x => char.IsDigit(x)).ToArray()));
             ticket.CreationTime = time;
             

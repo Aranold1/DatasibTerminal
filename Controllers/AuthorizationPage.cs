@@ -60,8 +60,10 @@ namespace DataSibTerminal.Controllers
                     {
                         var claims = new List<Claim>(new Claim[]
                         {
+                            new Claim("name",$"User:{usersDb.Name}"),
                             new Claim(ClaimTypes.NameIdentifier, usersDb.Email),
-                            new Claim("User", "SimpleUser")
+                            new Claim("User", "SimpleUser"),
+
                         });
                         
                         var identity = new ClaimsIdentity(claims,"cookie",nameType:null,roleType:"User");
