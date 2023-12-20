@@ -19,13 +19,13 @@
 
   <ItemGroup>
     <None Include="wwwroot\css\styles\example\adminPfp.jpg" />
-    <None Include="wwwroot\css\leftBar.css" />
-    <None Include="wwwroot\css\mainPage.css" />
-    <None Include="wwwroot\css\middleBar.css" />
-    <None Include="wwwroot\css\rightBar.css" />
+    <None Include="wwwroot\lib\leftBar.css" />
+    <None Include="wwwroot\lib\mainPage.css" />
+    <None Include="wwwroot\lib\middleBar.css" />
+    <None Include="wwwroot\lib\rightBar.css" />
     <None Include="wwwroot\css\styles\svg\menu.svg" />
     <None Include="wwwroot\css\sytemAdminLogin.css" />
-    <None Include="wwwroot\css\loginPage.css" />
+    <None Include="wwwroot\lib\loginPage.css" />
   </ItemGroup>
 
   <ItemGroup>

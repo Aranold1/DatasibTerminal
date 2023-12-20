@@ -31,8 +31,9 @@
 }
 
 .backing {
-  background: #272727;
-  border-radius: 12px 12px 0px 0px;
+    background: #272727;
+    border-radius: 12px 12px 0px 0px;
+    overflow-y: auto;
 }
 
 .inbox {

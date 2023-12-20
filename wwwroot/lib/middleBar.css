@@ -31,14 +31,17 @@
 }
 
 .backing {
-  background: #272727;
-  border-radius: 12px 12px 0px 0px;
+    background: #272727;
+    border-radius: 12px 12px 0px 0px;
+    height: 93%;
+    overflow-y: auto;
 }
 
 .inbox {
   margin-top: 4px;
   border-radius: 12px;
   background: #272727;
+  height: 1000px;
 }
 
 .msg {
