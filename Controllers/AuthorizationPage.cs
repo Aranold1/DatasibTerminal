@@ -7,6 +7,8 @@ using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Authentication;
 using System.Security.Claims;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 
 namespace DataSibTerminal.Controllers
@@ -14,6 +16,7 @@ namespace DataSibTerminal.Controllers
     [Route("/")]
     public class AuthorizationPage : Controller
     {
+        
         
         private readonly ILogger<AuthorizationPage> _logger;
         //we gonna encapsulate it latter 
@@ -82,31 +85,14 @@ namespace DataSibTerminal.Controllers
 
         async Task<bool> IsLoginAndPasswordValid(string email, string password)
         {
-            string apiUrl = "http://158.101.194.79:5003/api/authorization  "; //url 
-
-            Users_DTO dataToSend = new Users_DTO
+            
+            await foreach (var u in _postgresContext.Users)
             {
-                Email = email,
-                Password = password,
-            };
 
-            using (var httpClient = new HttpClient())
-            {
-                httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-
-                var content = new StringContent(JsonConvert.SerializeObject(dataToSend), System.Text.Encoding.UTF8, "application/json");
-
-                HttpResponseMessage response = await httpClient.PostAsync(apiUrl, content);
-
-                if (response.IsSuccessStatusCode)
+                if (u.Password == password && u.Email == email)
                 {
-                    string responseBody = await response.Content.ReadAsStringAsync();
-                    return JsonConvert.DeserializeObject<bool>(responseBody);
-
-                }
-                else
-                {
-                    Console.WriteLine("Error sending data to the web API. Status code: " + response.StatusCode);
+                   
+                    return true;
                 }
             }
             return false;
