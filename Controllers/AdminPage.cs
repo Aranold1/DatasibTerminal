@@ -22,17 +22,9 @@ namespace DataSibTerminal.Controllers
         [HttpGet("main")]
         public async Task<IActionResult> Main()
         {
-
-            Task<List<Ticket>> ticketListTask = postgresDb.Ticket.ToListAsync();
-
-            
-            List<Ticket> ticketList = await ticketListTask;
+            var ticketList = await postgresDb.Ticket.ToListAsync();
             ticketList.Reverse();
-            ViewData["TicketList"] = ticketList;
-
-
-
-            return View("Main");
+            return View("Main",ticketList);
         }
     }
 }
