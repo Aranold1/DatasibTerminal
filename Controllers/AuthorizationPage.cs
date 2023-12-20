@@ -45,7 +45,6 @@ namespace DataSibTerminal.Controllers
                 {
                     await Console.Out.WriteLineAsync("db is dead");
                     return View("Login");
-
                 }
                 if (usersDb is null)
                 {

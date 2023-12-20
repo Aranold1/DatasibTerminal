@@ -27,6 +27,7 @@ namespace DataSibTerminal.Controllers
 
             
             List<Ticket> ticketList = await ticketListTask;
+            ticketList.Reverse();
             ViewData["TicketList"] = ticketList;
 
 
