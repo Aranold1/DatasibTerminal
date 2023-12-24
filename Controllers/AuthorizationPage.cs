@@ -62,13 +62,14 @@ namespace DataSibTerminal.Controllers
                     {
                         var claims = new List<Claim>(new Claim[]
                         {
-                            new Claim("name",$"User:{usersDb.Name}"),
+                            new Claim("Id",usersDb.Id.ToString()),
+                            new Claim("Name",usersDb.Name),
                             new Claim(ClaimTypes.NameIdentifier, usersDb.Email),
                             new Claim("User", "SimpleUser"),
 
                         });
-                        
-                        var identity = new ClaimsIdentity(claims,"cookie",nameType:null,roleType:"User");
+
+                        var identity = new ClaimsIdentity(claims, "cookie", nameType: null, roleType: "User");
                         var user = new ClaimsPrincipal(identity);
                         await HttpContext.SignInAsync(user);
                         return RedirectToAction("CreateTicket", "TicketCreationPage");
