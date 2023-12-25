@@ -23,7 +23,9 @@ namespace DataSibTerminal.Models
         [Column("anydesk_id")]
         [StringLength(12)]
         public string AnydeskId { get; set; }
-
+        [Column("username")]
+        [StringLength(50)]
+        public string Username { get; set; }
         [Column("creation_time")]
         public DateTime CreationTime { get; set; }
 
