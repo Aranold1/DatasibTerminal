@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("DataSibTerminal")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+52b642c575b5f0f60d4163aa56abd96b310ebea7")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+25a5a17c307b683f8acbeeb5a307db1fdaa78038")]
 [assembly: System.Reflection.AssemblyProductAttribute("DataSibTerminal")]
 [assembly: System.Reflection.AssemblyTitleAttribute("DataSibTerminal")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

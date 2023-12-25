@@ -25,10 +25,13 @@ using System.Security.Cryptography;
                 if (ModelState.IsValid)
                 {
                     var claims = User.Claims.ToList();
-                    try{
+                    try
+                    {
+                        var Name = claims.Where(x => x.Type == "Name").Select(x => x.Value).First();
                         var Id = int.Parse(claims.Where(x => x.Type == "Id").Select(x => x.Value).First());
                         ticket.UserId = Id;
-                        ticket.CreationTime = DateTime.UtcNow;           
+                        ticket.CreationTime = DateTime.UtcNow;
+                        ticket.Username = Name;
                     }
                     catch{
                        
