@@ -28,7 +28,6 @@ namespace DataSibTerminal.Controllers
         }
         public async Task<IActionResult> LogIn(Users userForm)
         {
-            var UserClaims = User.Claims;
             if (User.IsInRole("SimpleUser"))
             {
                 return RedirectToAction("CreateTicket", "TicketCreationPage");

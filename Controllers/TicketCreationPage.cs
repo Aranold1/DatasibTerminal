@@ -14,7 +14,7 @@ using System.Security.Cryptography;
         public class TicketCreationPage : Controller
         {
 
-            postgresContext postgresContext;
+            readonly postgresContext postgresContext;
 
             public TicketCreationPage(postgresContext postgresContext)
             {
@@ -26,7 +26,6 @@ using System.Security.Cryptography;
                 {
                     var claims = User.Claims.ToList();
                     try{
-                        var Name = claims.Where(x => x.Type == "Name").Select(x => x.Value).First();
                         var Id = int.Parse(claims.Where(x => x.Type == "Id").Select(x => x.Value).First());
                         ticket.UserId = Id;
                         ticket.CreationTime = DateTime.UtcNow;           
