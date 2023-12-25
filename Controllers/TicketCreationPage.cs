@@ -28,6 +28,7 @@ using System.Security.Cryptography;
                     try{
                         var Name = claims.Where(x => x.Type == "Name").Select(x => x.Value).First();
                         var Id = int.Parse(claims.Where(x => x.Type == "Id").Select(x => x.Value).First());
+                        ticket.UserId = Id;
                         ticket.CreationTime = DateTime.UtcNow;           
                     }
                     catch{

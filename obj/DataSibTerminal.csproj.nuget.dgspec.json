@@ -1,25 +1,27 @@
 {
   "format": 1,
   "restore": {
-    "/home/henry/work/DatasibTerminal/DataSibTerminal.csproj": {}
+    "C:\\csharp\\DatasibTerminal\\DataSibTerminal.csproj": {}
   },
   "projects": {
-    "/home/henry/work/DatasibTerminal/DataSibTerminal.csproj": {
+    "C:\\csharp\\DatasibTerminal\\DataSibTerminal.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/henry/work/DatasibTerminal/DataSibTerminal.csproj",
+        "projectUniqueName": "C:\\csharp\\DatasibTerminal\\DataSibTerminal.csproj",
         "projectName": "DataSibTerminal",
-        "projectPath": "/home/henry/work/DatasibTerminal/DataSibTerminal.csproj",
-        "packagesPath": "/home/henry/.nuget/packages/",
-        "outputPath": "/home/henry/work/DatasibTerminal/obj/",
+        "projectPath": "C:\\csharp\\DatasibTerminal\\DataSibTerminal.csproj",
+        "packagesPath": "C:\\Users\\Henry\\.nuget\\packages\\",
+        "outputPath": "C:\\csharp\\DatasibTerminal\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/home/henry/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\Henry\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net7.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -78,7 +80,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/lib/dotnet/sdk/7.0.114/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     }
