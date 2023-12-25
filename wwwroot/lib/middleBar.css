@@ -45,9 +45,11 @@
 }
 
 .msg {
+  width: 300px;
   height: 145px;
   border-radius: 12px;
   padding-right: 14px
+  
 }
 
 .msg-button {
@@ -56,6 +58,7 @@
   background: none;
   cursor: pointer;
   padding: 0;
+  
 }
 
 .msg-button:active {
@@ -87,4 +90,11 @@
   font-weight: 400;
   margin: 0;
   padding: 4px 0 0 16px;
+}
+.right{
+    float:right;
+}
+.white{
+    color:white;
+
 }

@@ -12,7 +12,8 @@ namespace DataSibTerminal.Models
     [Table("ticket")]
     public partial class Ticket
     {
-        
+        [Column("ticket_id")]
+        public int ticket_id { get; set; }
         [Display(Name = "опишите вашу проблему")]
         [Required]
         [Column("description")]
@@ -21,7 +22,8 @@ namespace DataSibTerminal.Models
         [Display(Name = "укажите ваш anydesk id")]
         [Required]
         [Column("anydesk_id")]
-        [StringLength(12)]
+        [StringLength(12, MinimumLength = 12)]
+        
         public string AnydeskId { get; set; }
         [Column("username")]
         [StringLength(50)]
