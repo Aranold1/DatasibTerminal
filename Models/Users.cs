@@ -13,6 +13,7 @@ namespace DataSibTerminal.Models;
 public partial class Users
 {
     [Key]
+
     [Column("id")]
     public int Id { get; set; }
 

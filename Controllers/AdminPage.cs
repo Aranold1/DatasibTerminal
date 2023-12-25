@@ -19,7 +19,7 @@ namespace DataSibTerminal.Controllers
 
         }
 
-        [HttpGet("main")]
+        [Route("main")]
         public async Task<IActionResult> Main()
         {
             var ticketList = await postgresDb.Ticket.ToListAsync();

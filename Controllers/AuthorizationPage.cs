@@ -39,17 +39,17 @@ namespace DataSibTerminal.Controllers
 
                
                 //some really bad code
-                var usersDb = new Users();
+                var userDb = new Users();
                 try
                 {
-                    usersDb = _postgresContext.Users.FirstOrDefault(x => x.Email == userForm.Email);
+                    userDb = _postgresContext.Users.FirstOrDefault(x => x.Email == userForm.Email);
                 }
                 catch
                 {
                     await Console.Out.WriteLineAsync("db is dead");
                     return View("Login");
                 }
-                if (usersDb is null)
+                if (userDb is null)
                 {
                     await Console.Out.WriteLineAsync("user is null");
                     return View("Login");
@@ -60,16 +60,17 @@ namespace DataSibTerminal.Controllers
                     bool res = await IsLoginAndPasswordValid(userForm.Email, userForm.Password);
                     if (res)
                     {
+                        System.Console.WriteLine(userDb.Id);
                         var claims = new List<Claim>(new Claim[]
                         {
-                            new Claim("Id",usersDb.Id.ToString()),
-                            new Claim("Name",usersDb.Name),
-                            new Claim(ClaimTypes.NameIdentifier, usersDb.Email),
+                            new Claim("Name",userDb.Name),
+                            new Claim("Id",userDb.Id.ToString()),
+                            new Claim(ClaimTypes.NameIdentifier, userDb.Email),
                             new Claim("User", "SimpleUser"),
 
                         });
-
-                        var identity = new ClaimsIdentity(claims, "cookie", nameType: null, roleType: "User");
+                        
+                        var identity = new ClaimsIdentity(claims,"cookie",nameType:null,roleType:"User");
                         var user = new ClaimsPrincipal(identity);
                         await HttpContext.SignInAsync(user);
                         return RedirectToAction("CreateTicket", "TicketCreationPage");
@@ -77,7 +78,7 @@ namespace DataSibTerminal.Controllers
                 }
                 catch
                 {
-                    await Console.Out.WriteLineAsync("auth microservies is dead");
+                    await Console.Out.WriteLineAsync("db is dead");
                     return View("Login");
                 }
             }

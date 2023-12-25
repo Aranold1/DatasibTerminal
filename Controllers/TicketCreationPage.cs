@@ -4,34 +4,46 @@ using DataSibTerminal.Controllers;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Routing;
+using System.Security.Cryptography;
 
-namespace DataSibTerminal.Controllers
-{
-    [Route("yourtickets")]
-    
-    [Authorize(Roles = "SimpleUser")]
-    public class TicketCreationPage : Controller
+    namespace DataSibTerminal.Controllers
     {
-
-        postgresContext postgresContext;
-
-        public TicketCreationPage(postgresContext postgresContext)
+        [Route("yourtickets")]
+        
+        [Authorize(Roles = "SimpleUser")]
+        public class TicketCreationPage : Controller
         {
-            this.postgresContext = postgresContext;
-        }
-        public async Task<IActionResult> CreateTicket(Ticket ticket)
-        {
-            if (ModelState.IsValid)
+
+            postgresContext postgresContext;
+
+            public TicketCreationPage(postgresContext postgresContext)
             {
-                var claims = User.Claims.ToList();
-                var Name = claims.Where(x => x.Type == "Id").Select(x => x.Value).First();
-                var Id = int.Parse(claims.Where(x => x.Type == "Id").Select(x => x.Type).First());
-                long time = long.Parse(new string(DateTime.Now.ToString().Where(x => char.IsDigit(x)).ToArray()));
-                ticket.CreationTime = time;
-                postgresContext.Add(ticket);
-                await postgresContext.SaveChangesAsync();
+                this.postgresContext = postgresContext;
             }
-            return View();
+            public async Task<IActionResult> CreateTicket(Ticket ticket)
+            {
+                if (ModelState.IsValid)
+                {
+                    var claims = User.Claims.ToList();
+                    try{
+                        var Name = claims.Where(x => x.Type == "Name").Select(x => x.Value).First();
+                        var Id = int.Parse(claims.Where(x => x.Type == "Id").Select(x => x.Value).First());
+                        ticket.CreationTime = DateTime.UtcNow;           
+                    }
+                    catch{
+                       
+                        System.Console.WriteLine("cant parse ");
+                    }
+                    try{
+
+                        postgresContext.Add(ticket);
+                        await postgresContext.SaveChangesAsync();
+                    }
+                    catch{
+                        System.Console.WriteLine("some data are wrong");
+                    }
+                }
+                return View();
+            }
         }
     }
-}
