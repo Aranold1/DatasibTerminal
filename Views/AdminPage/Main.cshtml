@@ -75,10 +75,12 @@
                 </p>
                 <p class="right">@Model[a].CreationTime</p>
             </div>
+            <form asp-action="SendMassage" method="post">
             <div class="inputMsg">
-                <input class="inputMsg-input" id="sendMsg" placeholder="Message">
+                <input asp-for="massage" class="inputMsg-input" id="sendMsg" placeholder="Message">
                 <button class="sendMsg-button" form="#sendMsg">Send</button>
             </div>
+            </form>
         </div>
     </div>
 </body>
