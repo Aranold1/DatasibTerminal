@@ -3,6 +3,7 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
@@ -18,6 +19,8 @@ namespace DataSibTerminal.Models
         [Column("description")]
         public string Description { get; set; }
 
+        [Column("ticket_id")]
+        public int ticket_id { get; set; }
         [Display(Name = "укажите ваш anydesk id")]
         [Required]
         [Column("anydesk_id")]
