@@ -1,7 +1,9 @@
 @using DataSibTerminal.Models;
 @model List<Ticket>
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
-
+@{
+    int a = 0;
+}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -32,22 +34,22 @@
             </div>
             <div class="backing">
                 <ul class="inbox">
-                    @foreach (var ticket in Model)
+                    @for (int i = 0; i < Model.Count; i++)
                     {
                         <li>
-                            <button class="msg-button">
+                            <button class="msg-button" data-index="@i">
                                 <div class="msg">
                                     <h2 class="msgSenderName">
-                                        @ticket.Username
+                                        @Model[i].Username
                                     </h2>
                                     <h3 class="msgSubject">
-                                        @ticket.AnydeskId
+                                        @Model[i].AnydeskId
                                     </h3>
                                     <p class="msgText">
-                                        @ticket.Description
+                                        @Model[i].Description
                                        
                                     </p>
-                                    <p class="right ">@ticket.CreationTime</p>
+                                    <p class="right ">@Model[i].CreationTime</p>
                                     
                                 </div>
                             </button>
@@ -61,7 +63,17 @@
                 <div class="fillerName1">
                 </div>
             </div>
-            <div class="msgFullText">
+            <div class="msgFullText" id="msgFullText" data-model="@Newtonsoft.Json.JsonConvert.SerializeObject(Model)">
+                <h2 class="msgSenderName">
+                    @Model[a].Username
+                </h2>
+                <h3 class="msgSubject">
+                    @Model[a].AnydeskId
+                </h3>
+                <p class="msgText">
+                    @Model[a].Description
+                </p>
+                <p class="right">@Model[a].CreationTime</p>
             </div>
             <div class="inputMsg">
                 <input class="inputMsg-input" id="sendMsg" placeholder="Message">
@@ -71,3 +83,41 @@
     </div>
 </body>
 </html>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var buttons = document.querySelectorAll('.msg-button');
+        var msgFullText = document.getElementById('msgFullText');
+
+        buttons.forEach(function (button) {
+            button.addEventListener('click', function () {
+                var index = button.getAttribute('data-index');
+                var a = parseInt(index);
+
+               
+                var modelData = JSON.parse(msgFullText.getAttribute('data-model'));
+                var username = modelData[a].Username;
+                var anydeskId = modelData[a].AnydeskId;
+                var description = modelData[a].Description;
+                var creationTime = modelData[a].CreationTime;
+
+                
+                msgFullText.innerHTML = `
+                    <h2 class="msgSenderName">
+                        ${username}
+                    </h2>
+                    <h3 class="msgSubject">
+                        ${anydeskId}
+                    </h3>
+                    <p class="msgText">
+                        ${description}
+                    </p>
+                    <p class="right">${creationTime}</p>
+                `;
+
+                
+            });
+        });
+    });
+
+
+</script>
