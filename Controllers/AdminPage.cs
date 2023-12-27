@@ -1,62 +1,65 @@
-using System.ComponentModel.DataAnnotations;
-using DataSibTerminal.Models;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Routing;
-using Microsoft.EntityFrameworkCore;
+using System;
+using System.Collections.Generic;
 using System.Linq;
-
+using System.Threading.Tasks;
+using DataSibTerminal.Models;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace DataSibTerminal.Controllers
 {
-    public class AdminPage :Controller
+    public class AdminPage : Controller
     {
-        postgresContext postgresDb;
+        private readonly postgresContext tickets;
+        private readonly Massages massage;
 
-
-        public AdminPage(postgresContext pg)
+        public AdminPage(postgresContext pg, Massages m)
         {
-            postgresDb = pg;
-
+            tickets = pg;
+            massage = m;
         }
 
         [Route("main")]
         public async Task<IActionResult> Main()
         {
-            var ticketList = await postgresDb.Ticket.ToListAsync();
+            
+            var ticketList = await tickets.Ticket.ToListAsync();
             ticketList.Reverse();
-            return View("Main",ticketList);
+
+            var viewModel = new TicketMassageViewModel
+            {
+                Tickets = ticketList,
+                Massage = massage
+            };
+
+            return View("Main", viewModel);
         }
 
+        [HttpPost] 
         public async Task<IActionResult> SendMassage(Massages massages)
         {
             if (ModelState.IsValid)
             {
-                var claims = User.Claims.ToList();
+               
                 try
                 {
-                   
                     massages.send_time = DateTime.UtcNow;
-                    massages.massage
-                    ticket.Username = Name;
                 }
                 catch
                 {
-
                     System.Console.WriteLine("cant parse ");
                 }
                 try
                 {
-
-                    postgresDb.Add(ticket);
-                    await postgresDb.SaveChangesAsync();
+                    tickets.Massages.Add(massages);
+                    await tickets.SaveChangesAsync();
                 }
                 catch
                 {
                     System.Console.WriteLine("some data are wrong");
                 }
             }
-            return View();
+            return RedirectToAction("Main"); 
         }
     }
 }

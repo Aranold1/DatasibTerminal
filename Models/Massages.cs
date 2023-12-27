@@ -5,8 +5,7 @@ namespace DataSibTerminal.Models
 {
     public class Massages
     {
-        [Column("massage_id")]
-        public int Massage_id { get; set; }
+     
 
         [Column("fk_ticket_id")]
         public int Fk_ticket_id { get; set; }

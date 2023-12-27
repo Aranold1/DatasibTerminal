@@ -33,7 +33,7 @@ public partial class postgresContext : DbContext
 
         modelBuilder.Entity<Massages>(entity =>
         {
-            entity.HasKey(e => e.Massage_id).HasName("massages_pkey");
+            entity.HasKey(e => e.Fk_ticket_id).HasName("massages_pkey");
         });
         OnModelCreatingPartial(modelBuilder);
     }

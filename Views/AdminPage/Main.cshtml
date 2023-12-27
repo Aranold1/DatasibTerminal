@@ -1,5 +1,5 @@
 @using DataSibTerminal.Models;
-@model List<Ticket>
+@model TicketMassageViewModel
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @{
     int a = 0;
@@ -34,22 +34,22 @@
             </div>
             <div class="backing">
                 <ul class="inbox">
-                    @for (int i = 0; i < Model.Count; i++)
+                    @for (int i = 0; i < Model.Tickets.Count; i++)
                     {
                         <li>
                             <button class="msg-button" data-index="@i">
                                 <div class="msg">
                                     <h2 class="msgSenderName">
-                                        @Model[i].Username
+                                        @Model.Tickets[i].Username
                                     </h2>
                                     <h3 class="msgSubject">
-                                        @Model[i].AnydeskId
+                                        @Model.Tickets[i].AnydeskId
                                     </h3>
                                     <p class="msgText">
-                                        @Model[i].Description
+                                        @Model.Tickets[i].Description
                                        
                                     </p>
-                                    <p class="right ">@Model[i].CreationTime</p>
+                                    <p class="right ">@Model.Tickets[i].CreationTime</p>
                                     
                                 </div>
                             </button>
@@ -65,22 +65,23 @@
             </div>
             <div class="msgFullText" id="msgFullText" data-model="@Newtonsoft.Json.JsonConvert.SerializeObject(Model)">
                 <h2 class="msgSenderName">
-                    @Model[a].Username
+                    @Model.Tickets[a].Username
                 </h2>
                 <h3 class="msgSubject">
-                    @Model[a].AnydeskId
+                    @Model.Tickets[a].AnydeskId
                 </h3>
                 <p class="msgText">
-                    @Model[a].Description
+                    @Model.Tickets[a].Description
                 </p>
-                <p class="right">@Model[a].CreationTime</p>
+                <p class="right">@Model.Tickets[a].CreationTime</p>
             </div>
             <form asp-action="SendMassage" method="post">
-            <div class="inputMsg">
-                <input asp-for="massage" class="inputMsg-input" id="sendMsg" placeholder="Message">
-                <button class="sendMsg-button" form="#sendMsg">Send</button>
-            </div>
+                <div class="inputMsg">
+                    <input asp-for="Massage.massage" name="massage" class="inputMsg-input" id="sendMsg" placeholder="Message">
+                    <button class="sendMsg-button" form="#sendMsg">Send</button>
+                </div>
             </form>
+
         </div>
     </div>
 </body>
