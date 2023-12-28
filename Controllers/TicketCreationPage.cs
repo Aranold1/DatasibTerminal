@@ -31,6 +31,9 @@ using System.Security.Cryptography;
                         var Id = int.Parse(claims.Where(x => x.Type == "Id").Select(x => x.Value).First());
                         ticket.UserId = Id;
                         ticket.CreationTime = DateTime.UtcNow;
+                        //to do: mark key as serial to avoid this request in future 
+                        // ps: i dont know how to mark key as serial in entity orm
+                        ticket.ticket_id = postgresContext.Ticket.Max(x=>x.ticket_id)+1;
                         ticket.Username = Name;
                     }
                     catch{
