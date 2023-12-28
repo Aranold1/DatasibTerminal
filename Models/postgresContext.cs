@@ -17,7 +17,7 @@ public partial class postgresContext : DbContext
 
     public virtual DbSet<Users> Users { get; set; }
 
-    public virtual DbSet<Massages> Massages { get; set; }
+    public virtual DbSet<Message> Message { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -31,9 +31,9 @@ public partial class postgresContext : DbContext
             entity.HasKey(e => e.Id).HasName("users_pkey");
         });
 
-        modelBuilder.Entity<Massages>(entity =>
+        modelBuilder.Entity<Message>(entity =>
         {
-            entity.HasKey(e => e.Fk_ticket_id).HasName("massages_pkey");
+            entity.HasKey(e => e.Fk_ticket_id).HasName("messages_pkey");
         });
         OnModelCreatingPartial(modelBuilder);
     }

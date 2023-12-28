@@ -204,3 +204,8 @@ C:/csharp/DatasibTerminal/obj/Debug/net7.0/refint/DataSibTerminal.dll
 C:/csharp/DatasibTerminal/obj/Debug/net7.0/DataSibTerminal.pdb
 C:/csharp/DatasibTerminal/obj/Debug/net7.0/DataSibTerminal.genruntimeconfig.cache
 C:/csharp/DatasibTerminal/obj/Debug/net7.0/ref/DataSibTerminal.dll
+/home/henry/work/DatasibTerminal/bin/Debug/net7.0/Humanizer.dll
+/home/henry/work/DatasibTerminal/bin/Debug/net7.0/Microsoft.EntityFrameworkCore.Design.dll
+/home/henry/work/DatasibTerminal/bin/Debug/net7.0/Microsoft.Extensions.DependencyModel.dll
+/home/henry/work/DatasibTerminal/bin/Debug/net7.0/Mono.TextTemplating.dll
+/home/henry/work/DatasibTerminal/bin/Debug/net7.0/System.CodeDom.dll

@@ -10,40 +10,36 @@ namespace DataSibTerminal.Controllers
 {
     public class AdminPage : Controller
     {
-        private readonly postgresContext tickets;
-        private readonly Massages massage;
+        private readonly postgresContext postgresContext;
 
-        public AdminPage(postgresContext pg, Massages m)
+        public AdminPage(postgresContext pg)
         {
-            tickets = pg;
-            massage = m;
+            postgresContext = pg;
         }
 
         [Route("main")]
         public async Task<IActionResult> Main()
         {
             
-            var ticketList = await tickets.Ticket.ToListAsync();
+            var ticketList = await postgresContext.Ticket.ToListAsync();
+            var massage = await postgresContext.Message.ToListAsync();
             ticketList.Reverse();
-
-            var viewModel = new TicketMassageViewModel
-            {
-                Tickets = ticketList,
-                Massage = massage
+            var viewModel = new TicketMassageViewModel{
+                Massage = massage,
+                Tickets = ticketList
             };
-
             return View("Main", viewModel);
         }
 
         [HttpPost] 
-        public async Task<IActionResult> SendMassage(Massages massages)
+        public async Task<IActionResult> SendMassage(Message messages)
         {
             if (ModelState.IsValid)
             {
                
                 try
                 {
-                    massages.send_time = DateTime.UtcNow;
+                    messages.send_time = DateTime.UtcNow;
                 }
                 catch
                 {
@@ -51,8 +47,9 @@ namespace DataSibTerminal.Controllers
                 }
                 try
                 {
-                    tickets.Massages.Add(massages);
-                    await tickets.SaveChangesAsync();
+                    
+                    postgresContext.Message.Add(messages);
+                    await postgresContext.SaveChangesAsync();
                 }
                 catch
                 {

@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace DataSibTerminal.Models
 {
-    public class Massages
+    public class Message
     {
      
 
