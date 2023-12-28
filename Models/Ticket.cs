@@ -20,7 +20,7 @@ namespace DataSibTerminal.Models
         public string Description { get; set; }
 
         [Column("ticket_id")]
-        public int? ticket_id { get; set; }
+        public int ticket_id { get; set; }
         [Display(Name = "укажите ваш anydesk id")]
         [Required]
         [Column("anydesk_id")]
