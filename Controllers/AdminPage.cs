@@ -10,9 +10,9 @@ namespace DataSibTerminal.Controllers
 {
     public class AdminPage : Controller
     {
-        private readonly postgresContext postgresContext;
+        private readonly PostgresContext postgresContext;
 
-        public AdminPage(postgresContext pg)
+        public AdminPage(PostgresContext pg)
         {
             postgresContext = pg;
         }
@@ -21,8 +21,8 @@ namespace DataSibTerminal.Controllers
         public async Task<IActionResult> Main()
         {
             
-            var ticketList = await postgresContext.Ticket.ToListAsync();
-            var massage = await postgresContext.Message.ToListAsync();
+            var ticketList = await postgresContext.Tickets.ToListAsync();
+            var massage = await postgresContext.Messages.ToListAsync();
             ticketList.Reverse();
             var viewModel = new TicketMassageViewModel{
                 Massage = massage,
@@ -39,7 +39,7 @@ namespace DataSibTerminal.Controllers
                
                 try
                 {
-                    messages.send_time = DateTime.UtcNow;
+                    messages.SendTime = DateTime.UtcNow;
                 }
                 catch
                 {
@@ -48,7 +48,7 @@ namespace DataSibTerminal.Controllers
                 try
                 {
                     
-                    postgresContext.Message.Add(messages);
+                    postgresContext.Messages.Add(messages);
                     await postgresContext.SaveChangesAsync();
                 }
                 catch

@@ -20,13 +20,13 @@ namespace DataSibTerminal.Controllers
         
         private readonly ILogger<AuthorizationPage> _logger;
         //we gonna encapsulate it latter 
-        private readonly postgresContext _postgresContext;
-        public AuthorizationPage(ILogger<AuthorizationPage> logger, postgresContext postgresContext, IDataProtectionProvider idp)
+        private readonly PostgresContext _postgresContext;
+        public AuthorizationPage(ILogger<AuthorizationPage> logger, PostgresContext postgresContext, IDataProtectionProvider idp)
         {
             _logger = logger;
             _postgresContext = postgresContext;
         }
-        public async Task<IActionResult> LogIn(Users userForm)
+        public async Task<IActionResult> LogIn(User userForm)
         {
             if (User.IsInRole("SimpleUser"))
             {
@@ -38,7 +38,7 @@ namespace DataSibTerminal.Controllers
 
                
                 //some really bad code
-                var userDb = new Users();
+                var userDb = new User();
                 try
                 {
                     userDb = _postgresContext.Users.FirstOrDefault(x => x.Email == userForm.Email);

@@ -3,6 +3,6 @@
     public class TicketMassageViewModel
     {
         public List<Ticket> Tickets { get; set; }
-        public <List> Message Massage { get; set; }
+        public List<Message> Massage { get; set; }
     }
 }

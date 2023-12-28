@@ -11,7 +11,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace DataSibTerminal.Migrations
 {
-    [DbContext(typeof(postgresContext))]
+    [DbContext(typeof(PostgresContext))]
     [Migration("20231224112724_Initial")]
     partial class Initial
     {
