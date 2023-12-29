@@ -22,10 +22,10 @@ namespace DataSibTerminal.Controllers
         {
             
             var ticketList = await postgresContext.Tickets.ToListAsync();
-            var massage = await postgresContext.Messages.ToListAsync();
+            var message = await postgresContext.Messages.ToListAsync();
             ticketList.Reverse();
             var viewModel = new TicketMassageViewModel{
-                Massage = massage,
+                Massage = message,
                 Tickets = ticketList
             };
             return View("Main", viewModel);
@@ -34,12 +34,17 @@ namespace DataSibTerminal.Controllers
         [HttpPost] 
         public async Task<IActionResult> SendMassage(Message messages)
         {
+            await Console.Out.WriteLineAsync(messages.Message1);
             if (ModelState.IsValid)
             {
                
                 try
                 {
+                    var mes = await postgresContext.Messages.ToListAsync();
+                    messages.MessageId = mes.Count() + 1;
                     messages.SendTime = DateTime.UtcNow;
+                    
+                    
                 }
                 catch
                 {
