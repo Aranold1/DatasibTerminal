@@ -1,8 +1,9 @@
 @using DataSibTerminal.Models;
-@model TicketMassageViewModel
+@model MainViewModel
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @{
-    int a = 0;
+    List<Ticket> tickets = ViewData["ticket"] as List<Ticket>;
+    List<Message> messages = ViewData["message"] as List<Message>;
 }
 <!DOCTYPE html>
 <html lang="en">
@@ -34,27 +35,45 @@
             </div>
             <div class="backing">
                 <ul class="inbox">
-                    @for (int i = 0; i < Model.Tickets.Count; i++)
+                    @if (tickets != null)
+                    {
+                        @foreach (var ticket in tickets)
+                        {
+                            if (ticket != null)
+                            {
+                                <li>
+                                    <button class="msg-button">
+                                        <div class="msg">
+                                            <h2 class="msgSenderName">
+                                                @ticket.Username
+                                            </h2>
+                                            <h3 class="msgSubject">
+                                                @ticket.AnydeskId
+                                            </h3>
+                                            <p class="msgText">
+                                                @ticket.Description
+                                            </p>
+                                            <p class="right">@ticket.CreationTime</p>
+                                        </div>
+                                    </button>
+                                </li>
+                            }
+                            else
+                            {
+                                <li>
+                                    <p>Invalid ticket data</p>
+                                </li>
+                            }
+                        }
+                    }
+                    else
                     {
                         <li>
-                            <button class="msg-button" data-index="@i">
-                                <div class="msg">
-                                    <h2 class="msgSenderName">
-                                        @Model.Tickets[i].Username
-                                    </h2>
-                                    <h3 class="msgSubject">
-                                        @Model.Tickets[i].AnydeskId
-                                    </h3>
-                                    <p class="msgText">
-                                        @Model.Tickets[i].Description
-                                       
-                                    </p>
-                                    <p class="right ">@Model.Tickets[i].CreationTime</p>
-                                    
-                                </div>
-                            </button>
+                            <p>No ticket data available</p>
                         </li>
                     }
+
+
                 </ul>
             </div>
         </div>
@@ -63,21 +82,11 @@
                 <div class="fillerName1">
                 </div>
             </div>
-            <div class="msgFullText" id="msgFullText" data-model="@Newtonsoft.Json.JsonConvert.SerializeObject(Model)">
-                <h2 class="msgSenderName">
-                    @Model.Tickets[a].Username
-                </h2>
-                <h3 class="msgSubject">
-                    @Model.Tickets[a].AnydeskId
-                </h3>
-                <p class="msgText">
-                    @Model.Tickets[a].Description
-                </p>
-                <p class="right">@Model.Tickets[a].CreationTime</p>
-            </div>
-            <form asp-action="SendMassage" method="post">
+           
+            <form asp-action="SendMessage" method="post">
                 <div class="inputMsg">
-                    <input class="inputMsg-input" id="sendMsg" placeholder="Message">
+                    <input asp-for="message.Message1" class="inputMsg-input" id="sendMsg" placeholder="Message">
+
                     <button class="sendMsg-button" type="submit" form="#sendMsg">Send</button>
                 </div>
             </form>
@@ -86,41 +95,3 @@
     </div>
 </body>
 </html>
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        var buttons = document.querySelectorAll('.msg-button');
-        var msgFullText = document.getElementById('msgFullText');
-
-        buttons.forEach(function (button) {
-            button.addEventListener('click', function () {
-                var index = button.getAttribute('data-index');
-                var a = parseInt(index);
-
-               
-                var modelData = JSON.parse(msgFullText.getAttribute('data-model'));
-                var username = modelData[a].Username;
-                var anydeskId = modelData[a].AnydeskId;
-                var description = modelData[a].Description;
-                var creationTime = modelData[a].CreationTime;
-
-                
-                msgFullText.innerHTML = `
-                    <h2 class="msgSenderName">
-                        ${username}
-                    </h2>
-                    <h3 class="msgSubject">
-                        ${anydeskId}
-                    </h3>
-                    <p class="msgText">
-                        ${description}
-                    </p>
-                    <p class="right">${creationTime}</p>
-                `;
-
-                
-            });
-        });
-    });
-
-
-</script>

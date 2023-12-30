@@ -20,21 +20,27 @@ namespace DataSibTerminal.Controllers
         [Route("main")]
         public async Task<IActionResult> Main()
         {
-            
             var ticketList = await postgresContext.Tickets.ToListAsync();
-            var message = await postgresContext.Messages.ToListAsync();
+            var messageList = await postgresContext.Messages.ToListAsync();
             ticketList.Reverse();
-            var viewModel = new TicketMassageViewModel{
-                Massage = message,
-                Tickets = ticketList
+
+            var viewModel = new MainViewModel
+            {
+                ticket = ticketList.FirstOrDefault(), 
+                message = new Message()
             };
+
+            ViewData["ticket"] = viewModel; 
+            ViewData["message"] = messageList;
+
             return View("Main", viewModel);
         }
 
-        [HttpPost] 
-        public async Task<IActionResult> SendMassage(Message messages)
+
+
+        public async Task<IActionResult> SendMessage(Message messages)
         {
-            await Console.Out.WriteLineAsync(messages.Message1);
+           Console.WriteLine(messages.Message1);
             if (ModelState.IsValid)
             {
                
