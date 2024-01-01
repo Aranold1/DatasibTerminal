@@ -82,14 +82,15 @@
                 <div class="fillerName1">
                 </div>
             </div>
-           
+
             <form asp-action="SendMessage" method="post">
                 <div class="inputMsg">
-                    <input asp-for="message.Message1" class="inputMsg-input" id="sendMsg" placeholder="Message">
-
-                    <button class="sendMsg-button" type="submit" form="#sendMsg">Send</button>
+                    <input asp-for="message.Message1" class="inputMsg-input">
+                    <button class="sendMsg-button" type="submit">Send</button>
                 </div>
             </form>
+
+
 
         </div>
     </div>

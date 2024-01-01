@@ -26,11 +26,11 @@ namespace DataSibTerminal.Controllers
 
             var viewModel = new MainViewModel
             {
-                ticket = ticketList.FirstOrDefault(), 
+                ticket = new Ticket(),
                 message = new Message()
             };
 
-            ViewData["ticket"] = viewModel; 
+            ViewData["ticket"] = ticketList;  
             ViewData["message"] = messageList;
 
             return View("Main", viewModel);
@@ -38,28 +38,27 @@ namespace DataSibTerminal.Controllers
 
 
 
-        public async Task<IActionResult> SendMessage(Message messages)
+
+        public async Task<IActionResult> SendMessage(Message message)
         {
-           Console.WriteLine(messages.Message1);
-            if (ModelState.IsValid)
+            Console.WriteLine("sasdada");
+
+            if (!string.IsNullOrEmpty(message.Message1))
             {
-               
                 try
                 {
                     var mes = await postgresContext.Messages.ToListAsync();
-                    messages.MessageId = mes.Count() + 1;
-                    messages.SendTime = DateTime.UtcNow;
-                    
-                    
+                    message.MessageId = mes.Count() + 1;
+                    message.SendTime = DateTime.UtcNow;
                 }
                 catch
                 {
                     System.Console.WriteLine("cant parse ");
                 }
+
                 try
                 {
-                    
-                    postgresContext.Messages.Add(messages);
+                    postgresContext.Messages.Add(message);
                     await postgresContext.SaveChangesAsync();
                 }
                 catch
@@ -67,7 +66,9 @@ namespace DataSibTerminal.Controllers
                     System.Console.WriteLine("some data are wrong");
                 }
             }
-            return RedirectToAction("Main"); 
+
+            return RedirectToAction("Main");
         }
+
     }
 }
