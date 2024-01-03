@@ -12,7 +12,7 @@ public partial class Message
 
     public string? UserRole { get; set; }
     [Required]
-    public string? Message1 { get; set; }
+    public string? Body { get; set; }
 
     public DateTime? SendTime { get; set; }
 }

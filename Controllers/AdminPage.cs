@@ -43,7 +43,7 @@ namespace DataSibTerminal.Controllers
         {
             Console.WriteLine("sasdada");
 
-            if (!string.IsNullOrEmpty(message.Message1))
+            if (!string.IsNullOrEmpty(message.Body))
             {
                 try
                 {

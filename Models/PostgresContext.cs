@@ -37,7 +37,7 @@ public partial class PostgresContext : DbContext
 
             entity.Property(e => e.MessageId).HasColumnName("message_id");
             entity.Property(e => e.FkTicketId).HasColumnName("fk_ticket_id");
-            entity.Property(e => e.Message1).HasColumnName("message");
+            entity.Property(e => e.Body).HasColumnName("message");
             entity.Property(e => e.SendTime)
                 .HasColumnType("timestamp without time zone")
                 .HasColumnName("send_time");

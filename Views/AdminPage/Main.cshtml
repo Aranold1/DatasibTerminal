@@ -2,6 +2,7 @@
 @model MainViewModel
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @{
+	int a = 0;
     List<Ticket> tickets = ViewData["ticket"] as List<Ticket>;
     List<Message> messages = ViewData["message"] as List<Message>;
 }
@@ -35,45 +36,27 @@
             </div>
             <div class="backing">
                 <ul class="inbox">
-                    @if (tickets != null)
-                    {
-                        @foreach (var ticket in tickets)
-                        {
-                            if (ticket != null)
-                            {
-                                <li>
-                                    <button class="msg-button">
-                                        <div class="msg">
-                                            <h2 class="msgSenderName">
-                                                @ticket.Username
-                                            </h2>
-                                            <h3 class="msgSubject">
-                                                @ticket.AnydeskId
-                                            </h3>
-                                            <p class="msgText">
-                                                @ticket.Description
-                                            </p>
-                                            <p class="right">@ticket.CreationTime</p>
-                                        </div>
-                                    </button>
-                                </li>
-                            }
-                            else
-                            {
-                                <li>
-                                    <p>Invalid ticket data</p>
-                                </li>
-                            }
-                        }
-                    }
-                    else
+                    @for (int i = 0; i < tickets.Count; i++)
                     {
                         <li>
-                            <p>No ticket data available</p>
+                            <button class="msg-button" data-index="@i">
+                                <div class="msg">
+                                    <h2 class="msgSenderName">
+                                        @tickets[i].Username
+                                    </h2>
+                                    <h3 class="msgSubject">
+                                        @tickets[i].AnydeskId
+                                    </h3>
+                                    <p class="msgText">
+                                        @tickets[i].Description
+
+                                    </p>
+                                    <p class="right ">@tickets[i].CreationTime</p>
+
+                                </div>
+                            </button>
                         </li>
                     }
-
-
                 </ul>
             </div>
         </div>
@@ -82,15 +65,24 @@
                 <div class="fillerName1">
                 </div>
             </div>
-
-            <form asp-action="SendMessage" method="post">
-                <div class="inputMsg">
-                    <input asp-for="message.Message1" class="inputMsg-input">
-                    <button class="sendMsg-button" type="submit">Send</button>
-                </div>
-            </form>
-
-
+            <div class="msgFullText" id="msgFullText" data-model="@Newtonsoft.Json.JsonConvert.SerializeObject(Model)">
+                <h2 class="msgSenderName">
+                    @tickets[a].Username
+                </h2>
+                <h3 class="msgSubject">
+                    @tickets[a].AnydeskId
+                </h3>
+                <p class="msgText">
+                    @tickets[a].Description
+                </p>
+                <p class="right">@tickets[a].CreationTime</p>
+            </div>
+	        <form asp-action="SendMessage" method="post">
+		        <div class="inputMsg">
+			        <input asp-for="message.Body" class="inputMsg-input">
+			        <button class="sendMsg-button" type="submit">Send</button>
+		        </div>
+	        </form>
 
         </div>
     </div>
