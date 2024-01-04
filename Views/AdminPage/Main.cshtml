@@ -66,16 +66,14 @@
                 </div>
             </div>
             <div class="msgFullText" id="msgFullText" data-model="@Newtonsoft.Json.JsonConvert.SerializeObject(Model)">
-                <h2 class="msgSenderName">
-                    @tickets[a].Username
-                </h2>
-                <h3 class="msgSubject">
-                    @tickets[a].AnydeskId
-                </h3>
-                <p class="msgText">
-                    @tickets[a].Description
-                </p>
-                <p class="right">@tickets[a].CreationTime</p>
+                <ul>
+                @foreach(var message in messages)
+                {
+                    <li>
+                       <h2>@message.Body</h2>
+                    </li>    
+                }
+                </ul>
             </div>
 	        <form asp-action="SendMessage" method="post">
 		        <div class="inputMsg">

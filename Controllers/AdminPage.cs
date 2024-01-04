@@ -50,6 +50,7 @@ namespace DataSibTerminal.Controllers
                     var mes = await postgresContext.Messages.ToListAsync();
                     message.MessageId = mes.Count() + 1;
                     message.SendTime = DateTime.UtcNow;
+                    message.UserRole = User.Claims.FirstOrDefault(x => x.Type == "User").Value;
                 }
                 catch
                 {

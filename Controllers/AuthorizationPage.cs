@@ -65,7 +65,7 @@ namespace DataSibTerminal.Controllers
                             new Claim("Name",userDb.Name),
                             new Claim("Id",userDb.Id.ToString()),
                             new Claim(ClaimTypes.NameIdentifier, userDb.Email),
-                            new Claim("User", "SimpleUser"),
+                            new Claim("User", userDb.Role),
 
                         });
                         

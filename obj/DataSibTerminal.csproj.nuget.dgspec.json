@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\csharp\\DatasibTerminal\\DataSibTerminal.csproj": {}
+    "H:\\projects\\datasibTerm_petProj\\DatasibTerminal\\DataSibTerminal.csproj": {}
   },
   "projects": {
-    "C:\\csharp\\DatasibTerminal\\DataSibTerminal.csproj": {
+    "H:\\projects\\datasibTerm_petProj\\DatasibTerminal\\DataSibTerminal.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\csharp\\DatasibTerminal\\DataSibTerminal.csproj",
+        "projectUniqueName": "H:\\projects\\datasibTerm_petProj\\DatasibTerminal\\DataSibTerminal.csproj",
         "projectName": "DataSibTerminal",
-        "projectPath": "C:\\csharp\\DatasibTerminal\\DataSibTerminal.csproj",
-        "packagesPath": "C:\\Users\\Henry\\.nuget\\packages\\",
-        "outputPath": "C:\\csharp\\DatasibTerminal\\obj\\",
+        "projectPath": "H:\\projects\\datasibTerm_petProj\\DatasibTerminal\\DataSibTerminal.csproj",
+        "packagesPath": "C:\\Users\\egord\\.nuget\\packages\\",
+        "outputPath": "H:\\projects\\datasibTerm_petProj\\DatasibTerminal\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Henry\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\egord\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -22,6 +26,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -86,7 +91,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
         }
       }
     }
