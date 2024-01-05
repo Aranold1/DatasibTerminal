@@ -6,5 +6,7 @@
         public Ticket ticket { get; set; }
         
         public Message message { get; set; }
-    }
+         
+        public  int id { get; set; }
+}
 }

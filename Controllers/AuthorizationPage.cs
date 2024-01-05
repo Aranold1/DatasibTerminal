@@ -36,7 +36,7 @@ namespace DataSibTerminal.Controllers
             if (ModelState.IsValid||(userForm.Email!=null&&userForm.Password!=null))
             {
 
-                Console.WriteLine();
+                
                 //some really bad code
                 var userDb = new User();
                 try

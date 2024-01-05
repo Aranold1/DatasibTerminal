@@ -21,7 +21,7 @@ namespace DataSibTerminal.Controllers
         public async Task<IActionResult> Main()
         {
             var ticketList = await postgresContext.Tickets.ToListAsync();
-            var messageList = await postgresContext.Messages.ToListAsync();
+           
             ticketList.Reverse();
 
             var viewModel = new MainViewModel
@@ -31,7 +31,7 @@ namespace DataSibTerminal.Controllers
             };
 
             ViewData["ticket"] = ticketList;  
-            ViewData["message"] = messageList;
+           
 
             return View("Main", viewModel);
         }
@@ -50,7 +50,7 @@ namespace DataSibTerminal.Controllers
                     var mes = await postgresContext.Messages.ToListAsync();
                     message.MessageId = mes.Count() + 1;
                     message.SendTime = DateTime.UtcNow;
-                    message.UserRole = User.Claims.FirstOrDefault(x => x.Type == "User").Value;
+                    message.UserRole = Convert.ToString(User.Claims.FirstOrDefault(x => x.Type == "User").Value);
                 }
                 catch
                 {
@@ -67,6 +67,19 @@ namespace DataSibTerminal.Controllers
                     System.Console.WriteLine("some data are wrong");
                 }
             }
+
+            return RedirectToAction("Main");
+        }
+
+        public async Task<IActionResult> ChangeChat(int id)
+        {
+            var messageList = await postgresContext.Messages.ToListAsync();
+            Console.WriteLine("бля я воркаю");
+            ViewData["message"] = messageList.Where(x => x.FkTicketId == id).ToList();
+
+
+            ViewData["ChatId"] = id;
+            
 
             return RedirectToAction("Main");
         }

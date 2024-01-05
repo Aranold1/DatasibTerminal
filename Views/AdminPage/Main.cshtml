@@ -2,9 +2,17 @@
 @model MainViewModel
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @{
-	int a = 0;
+
     List<Ticket> tickets = ViewData["ticket"] as List<Ticket>;
     List<Message> messages = ViewData["message"] as List<Message>;
+    int id = 0; 
+
+    if (ViewData["ChatId"] != null)
+    {
+        id = (int)ViewData["ChatId"];
+    }
+    
+   
 }
 <!DOCTYPE html>
 <html lang="en">
@@ -38,24 +46,28 @@
                 <ul class="inbox">
                     @for (int i = 0; i < tickets.Count; i++)
                     {
+                        
                         <li>
-                            <button class="msg-button" data-index="@i">
-                                <div class="msg">
-                                    <h2 class="msgSenderName">
-                                        @tickets[i].Username
-                                    </h2>
-                                    <h3 class="msgSubject">
-                                        @tickets[i].AnydeskId
-                                    </h3>
-                                    <p class="msgText">
-                                        @tickets[i].Description
+                            <form asp-action="ChangeChat" method="post">
+                                <input asp-for="id" type="hidden" name="index" value="@i" />
+                                <button class="msg-button" type="submit">
+                                    <div class="msg">
+                                        <h2 class="msgSenderName">
+                                            @tickets[i].Username
+                                        </h2>
+                                        <h3 class="msgSubject">
+                                            @tickets[i].AnydeskId
+                                        </h3>
+                                        <p class="msgText">
+                                            @tickets[i].Description
+                                        </p>
+                                        <p class="right">@tickets[i].CreationTime</p>
+                                    </div>
+                                </button>
+                            </form>
 
-                                    </p>
-                                    <p class="right ">@tickets[i].CreationTime</p>
-
-                                </div>
-                            </button>
                         </li>
+                       
                     }
                 </ul>
             </div>
@@ -67,21 +79,28 @@
             </div>
             <div class="msgFullText" id="msgFullText" data-model="@Newtonsoft.Json.JsonConvert.SerializeObject(Model)">
                 <ul>
-                @foreach(var message in messages)
-                {
-                    <li>
-                       <h2>@message.Body</h2>
-                    </li>    
-                }
+                    @if (messages != null)
+                    {
+                        @foreach (var message in messages)
+                        {
+                            <li>
+                                <h2>@message.Body</h2>
+                            </li>
+                        }
+                    }
                 </ul>
             </div>
-	        <form asp-action="SendMessage" method="post">
-		        <div class="inputMsg">
-			        <input asp-for="message.Body" class="inputMsg-input">
-			        <button class="sendMsg-button" type="submit">Send</button>
-		        </div>
-	        </form>
 
+
+
+            <form asp-action="SendMessage" method="post">
+                <div class="inputMsg">
+                    <input asp-for="message.FkTicketId" type="hidden" name="index" value="@id" />
+                    <input asp-for="message.Body" class="inputMsg-input">
+                    <button class="sendMsg-button" type="submit">Send</button>
+                </div>
+            </form>
+           
         </div>
     </div>
 </body>
