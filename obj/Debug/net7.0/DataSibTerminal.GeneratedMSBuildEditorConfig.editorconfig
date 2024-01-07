@@ -9,25 +9,29 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = DataSibTerminal
 build_property.RootNamespace = DataSibTerminal
-build_property.ProjectDir = H:\projects\datasibTerm_petProj\DatasibTerminal\
+build_property.ProjectDir = /home/henry/work/DatasibTerminal/
 build_property.RazorLangVersion = 7.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = H:\projects\datasibTerm_petProj\DatasibTerminal
+build_property.MSBuildProjectDirectory = /home/henry/work/DatasibTerminal
 build_property._RazorSourceGeneratorDebug = 
 
-[H:/projects/datasibTerm_petProj/DatasibTerminal/Views/AdminPage/Main.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5QYWdlXE1haW4uY3NodG1s
+[/home/henry/work/DatasibTerminal/Views/AdminPage/adduser.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWRtaW5QYWdlL2FkZHVzZXIuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[H:/projects/datasibTerm_petProj/DatasibTerminal/Views/AuthorizationPage/LogIn.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aG9yaXphdGlvblBhZ2VcTG9nSW4uY3NodG1s
+[/home/henry/work/DatasibTerminal/Views/AdminPage/Main.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWRtaW5QYWdlL01haW4uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[H:/projects/datasibTerm_petProj/DatasibTerminal/Views/AuthorizationPage/RegestrationPage.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aG9yaXphdGlvblBhZ2VcUmVnZXN0cmF0aW9uUGFnZS5jc2h0bWw=
+[/home/henry/work/DatasibTerminal/Views/AuthorizationPage/LogIn.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQXV0aG9yaXphdGlvblBhZ2UvTG9nSW4uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[H:/projects/datasibTerm_petProj/DatasibTerminal/Views/TicketCreationPage/CreateTicket.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGlja2V0Q3JlYXRpb25QYWdlXENyZWF0ZVRpY2tldC5jc2h0bWw=
+[/home/henry/work/DatasibTerminal/Views/AuthorizationPage/RegestrationPage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQXV0aG9yaXphdGlvblBhZ2UvUmVnZXN0cmF0aW9uUGFnZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/henry/work/DatasibTerminal/Views/TicketCreationPage/CreateTicket.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvVGlja2V0Q3JlYXRpb25QYWdlL0NyZWF0ZVRpY2tldC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 

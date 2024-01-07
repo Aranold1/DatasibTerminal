@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
+using System.Runtime.Versioning;
 using System.Threading.Tasks;
 using DataSibTerminal.Models;
 using Microsoft.AspNetCore.Mvc;
@@ -70,11 +72,42 @@ namespace DataSibTerminal.Controllers
 
             return RedirectToAction("Main");
         }
+        [Route("adduser")]
+        public async Task<IActionResult> adduser(User usr)
+        {
+            if (ModelState.IsValid)
+            {
+                var name = usr.Name;
+                name = name.Trim();
+                if (!name.Contains(" "))
+                {
+                    ViewData["DoUserNameHaveSurname"] = false;
+                    System.Console.WriteLine("user dont have a surname");
+                    return View("adduser");
+                }
+                System.Console.WriteLine();
+                System.Console.WriteLine("user is valid at adduser");
+                usr.Id = postgresContext.Users.Count()+1;
+                usr.Role="SimpleUser";
+                if (!postgresContext.Users.Contains(usr))
+                {
+                    await postgresContext.AddAsync(usr);
+                    await postgresContext.SaveChangesAsync();
+                    return View("main");
+                }
+                else
+                {
+                    return View("adduser");
+                }
+                
+            }
+            return View("adduser");
+        }
 
         public async Task<IActionResult> ChangeChat(int id)
         {
             var messageList = await postgresContext.Messages.ToListAsync();
-            Console.WriteLine("бля я воркаю");
+            Console.WriteLine("пїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ");
             ViewData["message"] = messageList.Where(x => x.FkTicketId == id).ToList();
 
 

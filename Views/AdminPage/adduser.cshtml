@@ -1,0 +1,49 @@
+@using DataSibTerminal.Models;
+@model User
+@{
+    bool DoUserNameHaveSurname = true;
+}
+
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Datasib Login</title>
+    <link rel="stylesheet" href="~/lib/loginPage.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="main">
+        <div class="loginWindow">
+            <div class="loginMain">
+                <h1 class="loginTitle">
+                    Login
+                </h1>
+                <form asp-action="adduser" method="post">
+                    <div class="form-group">
+                        <input asp-for=Name class="credentialsEmail"  placeholder="Name ex. Ivan Ivanov">
+                    </div>
+                    <div class="form-group">
+                        <input asp-for=Email class="credentialsEmail" type="email" placeholder="Email">
+                    </div>
+                    <div class="form-group">
+                        <input asp-for=Password class="credentialsPassword" type="password" placeholder="Password">
+                    </div>
+                    <div class="buttons">
+                        <div class="button1">
+                            <button type="submit" class="signIn-button">Sign In</button>
+                        </div>
+                        <div class="button2">
+                            <a class="loginAsAdmin-url" href="https://datasib.ru" target=”_blank”>Login as admin</a>
+                        </div>
+                    </div>
+                </form>            
+            </div>
+        </div>
+    </div>
+</body>
+</html> 
