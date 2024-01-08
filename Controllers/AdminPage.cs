@@ -23,19 +23,30 @@ namespace DataSibTerminal.Controllers
         public async Task<IActionResult> Main()
         {
             var ticketList = await postgresContext.Tickets.ToListAsync();
-           
+            var messageList = await postgresContext.Messages.ToListAsync(); 
+
             ticketList.Reverse();
 
             var viewModel = new MainViewModel
             {
-                ticket = new Ticket(),
-                message = new Message()
+                Tickets = ticketList,
+                Messages = messageList 
             };
-
-            ViewData["ticket"] = ticketList;  
-           
-
+            
             return View("Main", viewModel);
+        }
+        public async Task<IActionResult> ChangeChat(int TicketId)
+        {
+            
+            var _messages = postgresContext.Messages.Where(x=>x.FkTicketId==TicketId).ToList();
+            var _tickets = await postgresContext.Tickets.ToListAsync();
+            var model = new MainViewModel
+            {
+              Messages = _messages,
+              Tickets  = _tickets
+                
+            };
+            return RedirectToAction("Main",model);
         }
 
 
@@ -43,6 +54,7 @@ namespace DataSibTerminal.Controllers
 
         public async Task<IActionResult> SendMessage(Message message)
         {
+            // бля егор это твое sasdada или я хуйнул 
             Console.WriteLine("sasdada");
 
             if (!string.IsNullOrEmpty(message.Body))
@@ -104,18 +116,7 @@ namespace DataSibTerminal.Controllers
             return View("adduser");
         }
 
-        public async Task<IActionResult> ChangeChat(int id)
-        {
-            var messageList = await postgresContext.Messages.ToListAsync();
-            Console.WriteLine("��� � ������");
-            ViewData["message"] = messageList.Where(x => x.FkTicketId == id).ToList();
-
-
-            ViewData["ChatId"] = id;
-            
-
-            return RedirectToAction("Main");
-        }
+        
 
     }
 }

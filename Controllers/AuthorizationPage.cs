@@ -81,7 +81,7 @@ namespace DataSibTerminal.Controllers
                     return View("Login");
                 }
             }
-            return View();
+            return View("Login");
         }
 
         async Task<bool> IsLoginAndPasswordValid(string email, string password)

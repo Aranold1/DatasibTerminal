@@ -3,16 +3,7 @@
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @{
 
-    List<Ticket> tickets = ViewData["ticket"] as List<Ticket>;
-    List<Message> messages = ViewData["message"] as List<Message>;
-    int id = 0; 
 
-    if (ViewData["ChatId"] != null)
-    {
-        id = (int)ViewData["ChatId"];
-    }
-    
-   
 }
 <!DOCTYPE html>
 <html lang="en">
@@ -49,24 +40,23 @@
             </div>
             <div class="backing">
                 <ul class="inbox">
-                    @for (int i = 0; i < tickets.Count; i++)
+                    @foreach (var t in Model.Tickets)
                     {
-                        
                         <li>
                             <form asp-action="ChangeChat" method="post">
-                                <input asp-for="id" type="hidden" name="index" value="@i" />
+                                <input asp-for="id" type="hidden" name="index" value="@t.FkUserId" />
                                 <button class="msg-button" type="submit">
                                     <div class="msg">
                                         <h2 class="msgSenderName">
-                                            @tickets[i].Username
+                                            @t.AnydeskId
                                         </h2>
                                         <h3 class="msgSubject">
-                                            @tickets[i].AnydeskId
+                                            @t.AnydeskId
                                         </h3>
                                         <p class="msgText">
-                                            @tickets[i].Description
+                                            @t.Description
                                         </p>
-                                        <p class="right">@tickets[i].CreationTime</p>
+                                        <p class="right">@t.CreationTime</p>
                                     </div>
                                 </button>
                             </form>
@@ -74,6 +64,7 @@
                         </li>
                        
                     }
+                    
                 </ul>
             </div>
         </div>
@@ -82,11 +73,11 @@
                 <div class="fillerName1">
                 </div>
             </div>
-            <div class="msgFullText" id="msgFullText" data-model="@Newtonsoft.Json.JsonConvert.SerializeObject(Model)">
+            <div class="msgFullText" id="msgFullText">
                 <ul>
-                    @if (messages != null)
+                    @if (Model.Messages != null)
                     {
-                        @foreach (var message in messages)
+                        @foreach (var message in Model.Messages)
                         {
                             <li>
                                 <h2>@message.Body</h2>
@@ -100,8 +91,8 @@
 
             <form asp-action="SendMessage" method="post">
                 <div class="inputMsg">
-                    <input asp-for="message.FkTicketId" type="hidden" name="index" value="@id" />
-                    <input asp-for="message.Body" class="inputMsg-input">
+                    <input type="hidden" name="index"  />
+                    <input  class="inputMsg-input">
                     <button class="sendMsg-button" type="submit">Send</button>
                 </div>
             </form>

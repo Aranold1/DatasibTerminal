@@ -1,7 +1,7 @@
 @using DataSibTerminal.Models;
 @model User
 @{
-    bool DoUserNameHaveSurname = true;
+    Layout = null;
 }
 
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
@@ -23,10 +23,7 @@
                 <h1 class="loginTitle">
                     Login
                 </h1>
-                <form asp-action="adduser" method="post">
-                    <div class="form-group">
-                        <input asp-for=Name class="credentialsEmail"  placeholder="Name ex. Ivan Ivanov">
-                    </div>
+                <form asp-action="LogIn" method="post">
                     <div class="form-group">
                         <input asp-for=Email class="credentialsEmail" type="email" placeholder="Email">
                     </div>
